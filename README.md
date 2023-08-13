@@ -1,4 +1,6 @@
-# React + TypeScript + Vite + Theme Toggler (localStorage)
+# WTD - What To Do | Life Calendar
+
+## React + TypeScript + Vite + Theme Toggler (localStorage)
 
 ![dark_preview](https://cdn.discordapp.com/attachments/650681889308278785/1137142086509019227/image.png)
 
@@ -31,3 +33,14 @@ If you are developing a production application, we recommend updating the config
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+## AUTHORS
+
+| Photo | Name | Role |
+|-------|------|------|
+|  <img width="100px" src="./public/AUTHORS/Авдюшин.png" alt="Авдюшин Добрыня"/>    | [Авдюшин Добрыня](https://github.com/Avdushin) | Автор идеи, Full-stack dev
+|  <img width="100px" src="./public/AUTHORS/Львов.jpg" alt="Львов Никита"/>    | [Никита Львов](https://github.com/Slark58) | Full-stack dev
+
+<div>
+   <a href="https://github.com/Live-Proggress-Studio">© 2023 LPS</a>
+</div>
