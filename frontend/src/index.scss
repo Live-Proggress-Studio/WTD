@@ -1,14 +1,37 @@
+@import "@Styles/Fonts.scss";
+
 /* App Variables */
 :root {
   --body-bg: #ffffffda;
+  --body-bg-hov: #dbdbdb;
   --body-color: #373737;
   --link-color: #000080;
+
+  // Header
+  --header-bg: #f1f1f1;
+
+  // Sidebar
+  --sidebar-bg: #e6e6e6;
+  --sidebar-color: #ffffff;
+
+  // keyboard styles
+  --kb-color: rgba(0, 0, 0, 0.5);
 }
 
 [data-theme="dark"] {
   --body-bg: #373737;
+  --body-bg-hov: #414141;
   --body-color: #fff;
   --link-color: #5656dd;
+
+  // Header
+  --header-bg: #252525;
+
+  // Sidebar
+  --sidebar-bg: #2B2B2B; 
+  
+  // keyboard styles
+  --kb-color: rgba(255, 255, 255, 0.5);
 }
 
 a {
@@ -24,10 +47,6 @@ body {
   background: var(--body-bg);
   color: var(--body-color);
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1,
@@ -62,8 +81,14 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+// @inputs
+input {
+  outline: none;
+  border: none;
+}
+
 code {
-  background: color-mix(in srgb,var(--body-bg),#000 15%);
+  background: color-mix(in srgb, var(--body-bg), #000 15%);
   border-radius: 7px;
   padding: 5px;
 }

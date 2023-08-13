@@ -1,0 +1,18 @@
+@import '../Styles/Fonts.scss';
+
+// @Fonts
+$Ysabeau-font: 'Ysabeau Infant', sans-serif;
+$heebo-font: 'Heebo', sans-serif;
+// @Container
+$f-container: 20px 20px;
+$h-container: 20px 0;
+$w-container: 0 20px;
+// @Inputs
+$input-radius: 5px;
+// @ui-index -  Переменные для регулирования z-index
+$ui-index-1: 1; // Для наползающих элементов в общем потоке
+$ui-index-2: 2; // Для наползающих элементов в общем потоке
+$ui-index-3: 3; // Для масок (blur, затемнение)
+$ui-index-4: 4; // Для сайдбаров
+$ui-index-5: 5; // Для модальных оконо (popup)
+$ui-index-6: 6; // Для элементов, покрываюших всё

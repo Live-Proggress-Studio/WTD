@@ -30,11 +30,11 @@
       "@Shared/*": ["src/Shared/*"],
       "@Widgets/*": ["src/Widgets/*"],
       "@Features/*": ["src/Features/*"],
-      "@Styles/*": ["src/App/Styles/*"],
-      "@imgs/*": ["src/assets/img/*"],
-      "@Icons/*": ["src/assets/Icons/*"]
+      "@Styles/*": ["src/Shared/Styles/*"],
+      "@imgs/*": ["src/Shared/assets/img/*"],
+      "@Icons/*": ["src/Shared/assets/icons/*"]
     }
   },
-  "include": ["src/*", "src/App/*", "src/Entities/*", "src/Pages/*", "src/Shared/*", "src/Widgets/*", "src/Features/*", "src/App/Styles/*", "src/assets/img/*", "src/assets/Icons/*", "src/Pages/ui/*"],
+  "include": ["src/*", "src/App/*", "src/Entities/*", "src/Pages/*", "src/Shared/*", "src/Widgets/*", "src/Features/*", "src/Shared/Styles/*", "src/Shared/assets/img/*", "src/Shared/assets/icons*", "src/Pages/ui/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -14,7 +14,7 @@ export default defineConfig({
       "@Shared": path.resolve(__dirname, './src/Shared'),
       "@Widgets": path.resolve(__dirname, './src/Widgets'),
       "@Features": path.resolve(__dirname, './src/Features'),
-      "@Styles": path.resolve(__dirname, './src/App/Styles'),
+      "@Styles": path.resolve(__dirname, 'src/Shared/Styles'),
       "@Img": path.resolve(__dirname, './src/Shared/assets/img'),
       "@Icons": path.resolve(__dirname, './src/Shared/assets/icons'),
     },

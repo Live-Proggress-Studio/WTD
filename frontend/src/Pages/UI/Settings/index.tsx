@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import RadioToggler from "../../../Components/Share/DarkMode/RadioToggler/RadioToggler";
-import CheckBoxToggler from "../../../Components/Share/DarkMode/CheckBoxToggler/CheckBoxToggler";
+import RadioToggler from "@Features/DarkMode/RadioToggler";
+import CheckBoxToggler from "@Features/DarkMode/CheckBoxToggler";
 
 const Settings = () => {
   return (

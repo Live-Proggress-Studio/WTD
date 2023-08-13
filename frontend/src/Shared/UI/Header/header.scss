@@ -1,0 +1,80 @@
+@import "@Styles/Vars.scss";
+
+.header {
+    position: fixed;
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--header-bg);
+    height: 45px;
+    align-items: center;
+    z-index: $ui-index-6;
+
+    &__container {
+        padding: $w-container;
+    }
+}
+.nav-menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    &__left {
+        display: flex;
+        height: 27px;
+        padding-top: 8px;
+        align-items: center;
+        gap: 8px;
+    }
+}
+.menu-left {
+    // .menu-left__burger-menu
+
+    &__burger-menu {
+    }
+
+    // .menu-left__home
+
+    &__home {
+    }
+
+    // .menu-left__search
+
+    &__search {
+        position: relative;
+        width: 168px;
+        &__wrapper input {
+            border-radius: $input-radius;
+            border: none;
+            outline: none !important;
+            height: 24px;
+            color: var(--body-color);
+            background-color: var(--body-bg-hov);
+            padding: 0 8px;
+            width: 100%;
+            &::placeholder {
+                font-size: 14px;
+            }
+        }
+    }
+}
+.kb {
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    color: var(--kb-color);
+    background-color: var(--body-bg);
+    padding: 2px 2px 1px 2px;
+    border-radius: $input-radius;
+    font-family: $heebo-font;
+    font-weight: 300;
+    font-size: 12px;
+}
+.nav-menu {
+    // .nev-menu__right
+
+    &__right {
+    }
+}
+.avatar {
+    padding-top: 3px;
+}

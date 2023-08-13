@@ -1,0 +1,30 @@
+@import '@Styles/Vars.scss';
+
+.sidebar-item {
+	a {
+		display: flex;
+		width: 100%;
+		gap: 3px;
+		height: 36px;
+		align-items: center;
+		color: var(--body-color);
+	}
+	background: var(--sidebar-bg);
+	padding: 5px 11px;
+	border-radius: 5px;
+	align-items: center;
+	&:hover, &:focus, &:active {
+        background: var(--body-bg-hov);
+    }
+		&__icon {
+		}
+
+		// .sidebar-item__text
+
+		&__text {
+			font-size: 1rem;
+			letter-spacing: 1.2px;
+			font-family: $heebo-font;
+			font-weight: 400;
+		}
+}
