@@ -6,7 +6,7 @@ import "./sidebar.scss";
 const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.ctrlKey && event.key === "m" || event.key === "ь") {
+      if (event.key === "m" || event.key === "ь") {
         setIsSidebarVisible((prevIsSidebarVisible) => !prevIsSidebarVisible);
       }
     };

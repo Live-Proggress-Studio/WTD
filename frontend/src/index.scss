@@ -2,6 +2,11 @@
 
 /* App Variables */
 :root {
+  // container
+  --s-container: calc(40px + var(--w-sidebar));
+  --w-sidebar: 254px;
+  --h-header: 45px;
+
   --body-bg: #ffffffda;
   --body-bg-hov: #dbdbdb;
   --body-color: #373737;

@@ -32,6 +32,7 @@ const Header = ({ onBurgerMenuClick, onSearchShortcut }) => {
           <div className="nav-menu__left">
             <div className="menu-left__burger-menu" onClick={onBurgerMenuClick}>
               <img src={burger} alt="menu-burger" />
+              <span className="tooltip">{Keyboard.MENU}</span>
             </div>
             <div className="menu-left__home">
               <Link to="/">

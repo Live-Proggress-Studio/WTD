@@ -1,0 +1,30 @@
+.settings {
+    margin: var(--h-header) var(--s-container);
+
+    // .settings__title
+
+    &__title {
+    }
+
+    // .settings__section
+
+    &__section {
+    }
+}
+.setion {
+    // .setion__item
+
+    &__item {
+    }
+}
+.item {
+    // .item__title
+
+    &__title {
+    }
+    &__title h2 {
+        font-size: 2rem;
+    }
+}
+.togglers-box {
+}

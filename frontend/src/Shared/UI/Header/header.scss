@@ -2,10 +2,12 @@
 
 .header {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     margin: 0 auto;
     background-color: var(--header-bg);
-    height: 45px;
+    height: --h-header;
     align-items: center;
     z-index: $ui-index-6;
 
@@ -30,9 +32,26 @@
     // .menu-left__burger-menu
 
     &__burger-menu {
-    }
+        position: relative;
+        cursor: pointer;
 
-    // .menu-left__home
+        &:hover .tooltip {
+            opacity: 1;
+            transition: opacity 2s ease-in-out;
+        }
+        .tooltip {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: color-mix(in srgb, var(--body-bg) 100%, var(--kb-color));
+            color: var(--body-color);
+            font-size: 12px;
+            padding: 2px 5px;
+            border-radius: $input-radius;
+            opacity: 0;
+        }
+    }
 
     &__home {
     }
@@ -60,7 +79,7 @@
 .kb {
     position: absolute;
     top: 4px;
-    right: 5px;
+    right: -10px;
     color: var(--kb-color);
     background-color: var(--body-bg);
     padding: 2px 2px 1px 2px;
