@@ -14,6 +14,7 @@ export const APP = {
 };
 
 //@ Сочетания клавиш
+//TODO: Нужно сделать страницу со всеми сочитаниями клавиш
 export const Keyboard = {
   SEARCH: `${symbols.ctrl}+f`,
   MENU: `m`,
