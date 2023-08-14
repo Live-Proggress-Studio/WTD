@@ -6,8 +6,7 @@ import "./sidebar.scss";
 const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
   useEffect(() => {
     const handleKeyDown = (event) => {
-      // Проверяем, не находится ли фокус внутри поля ввода
-      if (event.key === "m" || event.key === "ь" || event.keyCode === 75) {
+      if (event.key === "m" || event.key === "ь") {
         const activeElement = document.activeElement;
         const isInputFocused =
           activeElement.tagName === "INPUT" && activeElement.type === "text";

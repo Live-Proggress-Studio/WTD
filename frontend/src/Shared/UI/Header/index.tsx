@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Keyboard } from "@/Shared/variables";
 import burger from "@Icons/Burger.svg";
@@ -11,15 +11,18 @@ const Header = ({ onBurgerMenuClick, onSearchShortcut }) => {
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if ((event.ctrlKey || event.metaKey) && (event.key === "k" || event.key === "л" || event.key === "f" || event.key === "а"   || event.keyCode === 75)) {
-        event.preventDefault(); // Prevent browser search
+      if ((event.ctrlKey || event.metaKey) && (event.key === "f" || event.key === "а" || event.keyCode === 75)) {
+        event.preventDefault();
         onSearchShortcut();
         searchInputRef.current.focus();
+      } else if (event.key === "Escape") {
+        // Разфокусировка поля ввода при нажатии Escape
+        searchInputRef.current.blur();
       }
     };
-
+  
     document.addEventListener("keydown", handleKeyDown);
-
+  
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
