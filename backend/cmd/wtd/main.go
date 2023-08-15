@@ -1,11 +1,8 @@
 package main
 
 import (
-	"wtd/controllers"
 	"wtd/initializers"
-	"wtd/middleware"
-
-	"github.com/gin-gonic/gin"
+	"wtd/pkg/routes"
 )
 
 func init() {
@@ -15,14 +12,12 @@ func init() {
 }
 
 func main() {
-	r := gin.Default()
+	// @SETUP ROUTES
+	r := routes.SetupRoutes()
 
-	//TODO: Make Refactoring!
-
-	// Routes
-	r.POST("/signup", controllers.Signup)
-	r.POST("/login", controllers.Login)
-	r.GET("/validate", middleware.RequireAuth, controllers.JWTValidate)
-
+	// @RUN DEV SERVER
 	r.Run()
+
+	// @RUN PRODUCTION SERVER WITH SSL
+	// r.RunTLS(vars.PORT, vars.Cert, vars.Key)
 }

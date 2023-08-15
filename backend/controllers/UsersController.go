@@ -12,6 +12,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+// @ Signup controller
 func Signup(c *gin.Context) {
 	// Get Email/pass off req body
 	var body struct {
@@ -51,6 +52,7 @@ func Signup(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{})
 }
 
+// @ Login controller
 func Login(c *gin.Context) {
 	// Get the email and pass off req body
 	var body struct {
@@ -111,11 +113,23 @@ func Login(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{})
 }
 
+// @ JWTValidate controller
 func JWTValidate(c *gin.Context) {
 
 	user, _ := c.Get("user")
 
 	c.JSON(http.StatusOK, gin.H{
 		"message": user,
+	})
+}
+
+// @ Get All Users controller
+func GetAllUsers(c *gin.Context) {
+	var users []models.User
+
+	initializers.DB.Find(&users)
+
+	c.JSON(http.StatusOK, gin.H{
+		"users": users,
 	})
 }
