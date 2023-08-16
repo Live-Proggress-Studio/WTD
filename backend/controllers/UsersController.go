@@ -135,7 +135,7 @@ func Login(c *gin.Context) {
 
 	// Respond with JSON indicating successful login
 	c.JSON(http.StatusOK, gin.H{
-		"message": "Успешная авторизация!",
+		"message": user,
 	})
 }
 

@@ -67,7 +67,7 @@ const SignUP: FC = () => {
             />
           </div>
         </div>
-        <button type="submit" className="btn auth-btn">
+        <button className="btn auth-btn">
           Зарегистрироваться
         </button>
 

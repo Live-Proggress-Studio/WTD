@@ -13,13 +13,14 @@ const Login = () => {
     password: "",
   });
 
-  const [successMessage, setSuccessMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleLogin = async (event: FormEvent) => {
     event.preventDefault();
 
     try {
       const response = await useApi("login", "POST", values, true);
+      localStorage.setItem("ID", response.message.ID);
       console.log("Успешная авторизация!", response);
       resetForm();
       setTimeout(() => {
@@ -31,7 +32,6 @@ const Login = () => {
       console.error("Ошибка авторизации:", error);
     }
   };
-
   return (
     <div className="auth-form__wrapper">
       <form className="auth-form" onSubmit={handleLogin}>
