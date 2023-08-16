@@ -21,13 +21,14 @@
     "noFallthroughCasesInSwitch": true,
 
     "baseUrl": "./",
-    
+
     "paths": {
-      "@/*": ["src/*"], 
+      "@/*": ["src/*"],
       "@App/*": ["src/App/*"],
       "@Entities/*": ["src/Entities/*"],
       "@Pages/*": ["src/Pages/*"],
       "@Shared/*": ["src/Shared/*"],
+      "@Hooks/*": ["src/Shared/Hooks/*"],
       "@Widgets/*": ["src/Widgets/*"],
       "@Features/*": ["src/Features/*"],
       "@Styles/*": ["src/Shared/Styles/*"],
@@ -35,6 +36,19 @@
       "@Icons/*": ["src/Shared/assets/icons/*"]
     }
   },
-  "include": ["src/*", "src/App/*", "src/Entities/*", "src/Pages/*", "src/Shared/*", "src/Widgets/*", "src/Features/*", "src/Shared/Styles/*", "src/Shared/assets/img/*", "src/Shared/assets/icons*", "src/Pages/ui/*"],
+  "include": [
+    "src/**/*",
+    "src/App/**/*",
+    "src/Entities/**/*",
+    "src/Pages/**/*",
+    "src/Shared/**/*",
+    "src/Shared/Hooks/**/*",
+    "src/Widgets/**/*",
+    "src/Features/**/*",
+    "src/Shared/Styles/**/*",
+    "src/Shared/assets/img/**/*",
+    "src/Shared/assets/icons/**/*",
+    "src/Pages/ui/**/*"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,5 +1,7 @@
+@import "@Styles/Mixins";
+
 .settings {
-    margin: var(--h-header) var(--s-container);
+    @include container;
 
     // .settings__title
 

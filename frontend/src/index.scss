@@ -21,6 +21,10 @@
 
   // keyboard styles
   --kb-color: rgba(0, 0, 0, 0.5);
+
+  // Buttons
+  --button-bg: #be5f5b;
+  --button-color: #fafafa;
 }
 
 [data-theme="dark"] {
@@ -37,6 +41,10 @@
   
   // keyboard styles
   --kb-color: rgba(255, 255, 255, 0.5);
+
+  // Buttons
+  --button-bg: #be5f5b;
+  --button-color: #fafafa;
 }
 
 a {
@@ -66,20 +74,20 @@ h6 {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 5px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
-  background-color: var(--body-bg);
-  color: var(--body-color);
-  border: var(--body-color) 1px solid;
+  font-family: 'Heebo', sans-serif;
+  background-color: var(--button-bg);
+  color: var(--button-color);
+  border: transparent 1px solid;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border: var(--button-color) 1px solid;
 }
 button:focus,
 button:focus-visible {

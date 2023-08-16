@@ -1,0 +1,44 @@
+@import "@Styles/Mixins.scss";
+@import "@Styles/Vars.scss";
+
+.auth-form {
+    @include container;
+    text-align: center;
+    // margin: 5% auto;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+
+    // .auth-form__wrapper
+
+    &__wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    // .auth-form__title
+
+    &__title {
+    }
+
+    // .auth-form__box
+
+    &__box {
+        gap: 10px;
+        padding: 15px 0;
+    }
+
+    // .auth-form__input
+
+    &__input {
+        border-radius: $input-radius;
+        padding: 5px;
+    }
+
+    &__subtext {
+        padding: 15px 0;
+        width: 230px;
+    }
+}

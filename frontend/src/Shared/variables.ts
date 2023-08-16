@@ -1,5 +1,10 @@
+import React from 'react';
 import { symbols } from './Utils/symbols'
 //@ Глобальные переменные
+
+//@ Configuration
+//@ .env variables
+export const API_URL = import.meta.env.VITE_REACT_API_URL
 
 //@ Перемнные с описанием приложения и источниками
 export const APP = {

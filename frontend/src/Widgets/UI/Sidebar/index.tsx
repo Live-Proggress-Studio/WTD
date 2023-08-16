@@ -2,8 +2,12 @@ import React, { useEffect } from "react";
 import { SidebarItem } from "./SidebarItem";
 import sidebarLinks from "./SideBarLinks";
 import "./sidebar.scss";
+import { useAuth } from "@/Shared/Hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
+  const { isAuthenticated } = useAuth();
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "m" || event.key === "ь") {
@@ -26,14 +30,27 @@ const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
 
   return (
     <div className={`sidebar ${isSidebarVisible ? "" : "hidden"}`}>
-      {sidebarLinks.map((link, index) => (
-        <SidebarItem
-          key={index}
-          icon={link.icon}
-          text={link.text}
-          link={link.link}
-        />
-      ))}
+      {isAuthenticated ? (
+        <>
+          {sidebarLinks.map((link, index) => (
+            <SidebarItem
+              key={index}
+              icon={link.icon}
+              text={link.text}
+              link={link.link}
+            />
+          ))}
+        </>
+      ) : (
+        <>
+          <Link to="/signup">
+            <button>Регистрация</button>
+          </Link>
+          <Link to="/login">
+            <button>Вход</button>
+          </Link>
+        </>
+      )}
     </div>
   );
 };
