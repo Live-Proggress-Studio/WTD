@@ -1,28 +1,21 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
+import Cookies from "universal-cookie";
 import { useAuth } from "@Hooks/useAuth";
 import useApi from "@Hooks/useAPI";
 
-
 const UserProfile = () => {
   const { isAuthenticated, setIsAuthenticated } = useAuth();
-  const [cookies] = useCookies(["Authorization"]);
   const [userData, setUserData] = useState({ name: "", email: "" });
 
-  useEffect(() => {
-    // Если куки истек, выход пользователя из аккаунта
-    if (!cookies.Authorization) {
-      setIsAuthenticated(false);
-    }
+  const cookies = new Cookies();
 
-    // Здесь можно загрузить данные пользователя из API и установить их в state
-    // Например, с помощью useApi и useEffect
-    // Пример: useApi("user-profile", "GET").then((data) => setUserData(data));
-  }, [cookies.Authorization, setIsAuthenticated]);
+  useEffect(() => {
+    cookies.get("Authorization");
+  }, [isAuthenticated]);
 
   return (
-    <div className="container">
+    <div className="user-profile container">
       {isAuthenticated ? (
         <div>
           <p>Имя пользователя: {userData.name}</p>

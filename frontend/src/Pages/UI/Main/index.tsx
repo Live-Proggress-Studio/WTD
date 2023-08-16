@@ -17,8 +17,8 @@ const Main = () => {
     <div className="container">
       {isAuthenticated ? (
         <div>
-          <h2>Вы авторизованы как:</h2>
-          <h3>{userData.email}</h3>
+          <h5>Вы авторизованы</h5>
+          <h5>{userData.email}</h5>
         </div>
       ) : (
         (window.location.href = "/login")

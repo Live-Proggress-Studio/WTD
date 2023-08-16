@@ -1,8 +1,9 @@
-import calendarIcon from "@Shared/assets/icons/Calendar.svg";
-import todo from "@Shared/assets/icons/TodoList.svg";
-import goal from "@Shared/assets/icons/Goal.svg";
-import graph from "@Shared/assets/icons/Graph.svg";
-import settings from "@Shared/assets/icons/Settings.svg";
+import calendarIcon from "@Icons/Calendar.svg";
+import todo from "@Icons/TodoList.svg";
+import goal from "@Icons/Goal.svg";
+import graph from "@Icons/Graph.svg";
+import settings from "@Icons/Settings.svg";
+import account from "@Icons/Account.svg";
 
 const sidebarLinks = [
   { icon: calendarIcon, text: "Календарь", link: "/calendar" },
@@ -10,6 +11,7 @@ const sidebarLinks = [
   { icon: goal, text: "Мои Цели", link: "/todo" },
   { icon: graph, text: "Статискика", link: "/stats" },
   { icon: settings, text: "Настройки", link: "/settings" },
+  { icon: account, text: "Аккаунт", link: "/profile" },
 ];
 
 export default sidebarLinks;

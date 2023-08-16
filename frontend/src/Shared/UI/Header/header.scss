@@ -7,7 +7,7 @@
     width: 100%;
     margin: 0 auto;
     background-color: var(--header-bg);
-    height: --h-header;
+    height: var(--h-header);
     align-items: center;
     z-index: $ui-index-6;
 
@@ -95,5 +95,5 @@
     }
 }
 .avatar {
-    padding-top: 3px;
+    padding-top: 10px;
 }

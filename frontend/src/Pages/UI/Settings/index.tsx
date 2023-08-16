@@ -4,6 +4,7 @@ import Cookies from "universal-cookie";
 import RadioToggler from "@Features/DarkMode/RadioToggler";
 import CheckBoxToggler from "@Features/DarkMode/CheckBoxToggler";
 import { useAuth } from "@Hooks/useAuth";
+import { KBMap } from "./KBMap";
 import "./settings.scss";
 
 const Settings = () => {
@@ -35,8 +36,21 @@ const Settings = () => {
           </div>
           <div className="setion__item">
             <div className="item__title">
+              <h2>Сочитания клавишь</h2>
+              <div className="item-box">
+                <div className="p-20">
+                  <Link to="/kbmap">Keyboard Map</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="setion__item">
+            <div className="item__title">
               <h2>Аккаунт</h2>
-              <div className="togglers-box">
+              <div className="item-box">
+                <div className="p-20">
+                  <Link to="/profile">Настройки аккаунта</Link>
+                </div>
                 <button type="button" className="button" onClick={handleLogout}>
                   Выйти
                 </button>

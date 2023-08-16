@@ -10,6 +10,7 @@ import { Login, SignUP } from "@/Pages/UI/Auth";
 import { AuthProvider } from "./Providers/AuthProvider";
 import { useAuth } from "@Hooks/useAuth";
 import UserProfile from "@/Pages/UI/Auth/UserProfile";
+import { KBMap } from "@/Pages/UI/Settings/KBMap";
 import Cookies from "universal-cookie";
 import "./App.scss";
 
@@ -49,18 +50,12 @@ function App() {
         />
 
         <Routes>
-          {isAuthenticated ? (
-            <>
-              <Route path="/signup" element={<SignUP />} />
-              <Route path="/login" element={<Login />} />
-            </>
-          ) : (
-            <>
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/profile" element={<UserProfile />} />
-            </>
-          )}
           <Route path="/" element={<Main />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/kbmap" element={<KBMap />} />
+          <Route path="/users/:id" element={<UserProfile />} />
+          <Route path="/signup" element={<SignUP />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </AuthProvider>
     </ThemeProvider>

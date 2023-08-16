@@ -160,6 +160,26 @@ func GetAllUsers(c *gin.Context) {
 	})
 }
 
+// @ Get User by ID controller
+func GetUserByID(c *gin.Context) {
+	userID := c.Param("id")
+
+	var user models.User
+
+	result := initializers.DB.First(&user, userID)
+
+	if result.Error != nil {
+		c.JSON(http.StatusNotFound, gin.H{
+			"error": "Пользователь не найден",
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"user": user,
+	})
+}
+
 // @ Logout controller
 func Logout(c *gin.Context) {
 	c.SetCookie("Authorization", "", -1, "", os.Getenv("CLIENT_URL"), false, true)

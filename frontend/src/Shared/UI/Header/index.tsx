@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Keyboard } from "@/Shared/variables";
 import burger from "@Icons/Burger.svg";
 import home from "@Icons/Home.svg";
-import userAvatar from "@Icons/User.svg";
+import notifications from "@Icons/notification_bel.svg";
 import "./header.scss";
 
 const Header = ({ onBurgerMenuClick, onSearchShortcut }) => {
@@ -55,7 +55,7 @@ const Header = ({ onBurgerMenuClick, onSearchShortcut }) => {
           </div>
           <div className="nav-menu__right">
             <div className="avatar">
-              <img src={userAvatar} alt="user's avatar" />
+              <img src={notifications} alt="user's avatar" />
             </div>
           </div>
         </nav>
