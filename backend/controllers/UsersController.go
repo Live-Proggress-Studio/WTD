@@ -131,7 +131,7 @@ func Login(c *gin.Context) {
 	}
 
 	// Set the cookie with SameSite=Lax attribute
-	c.SetCookie("Authorization", tokenString, 5, "", os.Getenv("CLIENT_URL"), false, true) // Secure=false, SameSite=Lax
+	c.SetCookie("Authorization", tokenString, 30*24*60*60, "", os.Getenv("CLIENT_URL"), false, true) // Secure=false, SameSite=Lax
 
 	// Respond with JSON indicating successful login
 	c.JSON(http.StatusOK, gin.H{
