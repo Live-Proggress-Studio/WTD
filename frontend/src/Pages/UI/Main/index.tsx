@@ -1,34 +1,27 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
+import Cookies from "universal-cookie";
 import { useAuth } from "@Hooks/useAuth";
 import useApi from "@Hooks/useAPI";
 import "./main.scss";
 
 const Main = () => {
   const { isAuthenticated, setIsAuthenticated } = useAuth();
-  const [cookies] = useCookies(["Authorization"]);
   const [userData, setUserData] = useState({ name: "", email: "" });
 
-  useEffect(() => {
-    console.log("Updated: isAuthenticated", isAuthenticated);
-    console.log("Updated: cookies.Authorization", cookies.Authorization);
-  }, [isAuthenticated, cookies.Authorization]);
-  
+  const cookies = new Cookies();
+
+  useEffect(() => {}, [isAuthenticated, cookies.get("Authorization")]);
+
   return (
     <div className="container">
       {isAuthenticated ? (
         <div>
-          <p>ВСЕ ОК!!</p>
+          <h2>Вы авторизованы как:</h2>
+          <h3>{userData.email}</h3>
         </div>
       ) : (
-        <>
-          <p>Пользователь не авторизован</p>
-          <a href="/login">LOGIN</a>
-          <p>{cookies.Authorization}</p>
-          {console.log(cookies.Authorization)}
-          
-        </>
+        (window.location.href = "/login")
       )}
     </div>
   );

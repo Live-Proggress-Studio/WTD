@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { withCookies, Cookies, useCookies } from 'react-cookie';
+import Cookies from "universal-cookie";
 import RadioToggler from "@Features/DarkMode/RadioToggler";
 import CheckBoxToggler from "@Features/DarkMode/CheckBoxToggler";
-import "./settings.scss";
 import { useAuth } from "@Hooks/useAuth";
+import "./settings.scss";
 
 const Settings = () => {
   const { setIsAuthenticated } = useAuth();
-  const [cookies, setCookie, removeCookie] = useCookies(["Authorization"]);
+  const cookies = new Cookies();
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    removeCookie('Authorization', { path: '/' });
+    cookies.remove("Authorization");
     setTimeout(() => {
       window.location.href = "/login";
     }, 0);
