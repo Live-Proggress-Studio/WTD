@@ -1,71 +1,81 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Cookies from "universal-cookie";
-import jwtdecode from "jwt-decode";
+import { useAuth } from "@Hooks/useAuth";
 import RadioToggler from "@Features/DarkMode/RadioToggler";
 import CheckBoxToggler from "@Features/DarkMode/CheckBoxToggler";
-import { useAuth } from "@Hooks/useAuth";
 import { KBMap } from "./KBMap";
+import jwtdecode from "jwt-decode";
+import { useCookies } from "react-cookie";
 import "./settings.scss";
+import useApi from "@Hooks/useAPI";
 
 const Settings = () => {
-  const { setIsAuthenticated } = useAuth();
-  const cookies = new Cookies();
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
 
-  const cooks = cookies.getAll();
-  const token = cookies.get("Authentication");
-  console.log(cooks);
-  // console.log(jwtDecode(token));
-
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-
-    cookies.remove("Authorization");
-    setTimeout(() => {
+  const handleLogout = async () => {
+    try {
+      // ? Вызываем хендлен `logout` на сервере
+      await useApi("logout", "POST", {}, true);
+      setIsAuthenticated(false);
+      // removeCookie("Authorization"); //! Не рпботает, т.к мы устанавливаем cookie с сервеа
       window.location.href = "/login";
-    }, 0);
+    } catch (error) {
+      console.error("Ошибка выхода:", error);
+    }
   };
 
   return (
     <>
-      <div className="settings">
-        <div className="settings__title">
-          <h1>Настройки</h1>
-        </div>
-        <div className="settings__section">
-          <div className="setion__item">
-            <div className="item__title">
-              <h2>Тема</h2>
-              <div className="togglers-box">
-                <CheckBoxToggler />
-              </div>
+      {isAuthenticated ? (
+        <>
+          <div className="settings">
+            <div className="settings__title">
+              <h1>Настройки</h1>
             </div>
-          </div>
-          <div className="setion__item">
-            <div className="item__title">
-              <h2>Сочитания клавишь</h2>
-              <div className="item-box">
-                <div className="p-20">
-                  <Link to="/kbmap">Keyboard Map</Link>
+            <div className="settings__section">
+              <div className="setion__item">
+                <div className="item__title">
+                  <h2>Тема</h2>
+                  <div className="togglers-box">
+                    <CheckBoxToggler />
+                  </div>
+                </div>
+              </div>
+              <div className="setion__item">
+                <div className="item__title">
+                  <h2>Сочитания клавишь</h2>
+                  <div className="item-box">
+                    <div className="p-20">
+                      <Link to="/kbmap">Keyboard Map</Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="setion__item">
+                <div className="item__title">
+                  <h2>Аккаунт</h2>
+                  <div className="item-box">
+                    <div className="p-20">
+                      <Link to="/profile">Настройки аккаунта</Link>
+                    </div>
+                    <button
+                      type="button"
+                      className="button"
+                      onClick={handleLogout}
+                    >
+                      Выйти
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="setion__item">
-            <div className="item__title">
-              <h2>Аккаунт</h2>
-              <div className="item-box">
-                <div className="p-20">
-                  <Link to="/profile">Настройки аккаунта</Link>
-                </div>
-                <button type="button" className="button" onClick={handleLogout}>
-                  Выйти
-                </button>
-              </div>
-            </div>
-          </div>
+        </>
+      ) : (
+        <div className="settings">
+          {window.location.href = "/login"}
         </div>
-      </div>
+      )}
     </>
   );
 };

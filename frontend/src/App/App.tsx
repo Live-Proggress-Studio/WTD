@@ -7,7 +7,7 @@ import "normalize.css";
 import Header from "@/Shared/UI/Header";
 import { Sidebar } from "@/Widgets/UI/Sidebar";
 import { Login, SignUP } from "@/Pages/UI/Auth";
-import { AuthProvider } from "./Providers/AuthProvider";
+import AuthProvider from "./Providers/AuthProvider";
 import { useAuth } from "@Hooks/useAuth";
 import UserProfile from "@/Pages/UI/Auth/UserProfile";
 import { KBMap } from "@/Pages/UI/Settings/KBMap";

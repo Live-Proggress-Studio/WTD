@@ -8,9 +8,9 @@ import "./index.scss";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <CookiesProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
     </CookiesProvider>
   </React.StrictMode>
 );

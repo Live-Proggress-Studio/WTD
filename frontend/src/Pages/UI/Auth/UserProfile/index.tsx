@@ -1,38 +1,43 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "universal-cookie";
 import { useAuth } from "@Hooks/useAuth";
-import useApi from "@Hooks/useApi"; // Обратите внимание на правильное название импорта
+import useApi from "@Hooks/useAPI";
+import { userModel } from "@/Shared/Models/userModel";
 
 const UserProfile = () => {
   const { isAuthenticated } = useAuth();
-  const [userData, setUserData] = useState({ name: "", email: "" });
-
-  const cookies = new Cookies();
-
-  const userID = localStorage.getItem("ID")
 
   useEffect(() => {
     if (isAuthenticated) {
-      useApi(`users/${userID}`, "GET", null, true) 
-        .then((response) => {
-          setUserData(response.user);
-        })
-        .catch((error) => {
-          console.error("Ошибка при получении данных пользователя", error);
-        });
+      useApi(`users/${userModel.id}`, "GET", null, true).catch((error) => {
+        console.error("Ошибка при получении данных пользователя", error);
+      });
     }
   }, [isAuthenticated]);
 
+  console.log(userModel);
+
   return (
-    <div className="user-profile container">
+    <>
       {isAuthenticated ? (
-        <div className="container">
-          <p>Email: {userData.email}</p>
-        </div>
+        <>
+          <div className="user-profile container">
+            {isAuthenticated ? (
+              <div className="container">
+                <p>User ID: {userModel?.email}</p>
+                <p>User name: {userModel?.name || `User${userModel?.id}`}</p>
+                <p>Email: {userModel?.email}</p>
+                <p>CreatedAt: {userModel?.createdAt}</p>
+              </div>
+            ) : (
+              <p>Пользователь не авторизован</p>
+            )}
+          </div>
+        </>
       ) : (
-        <p>Пользователь не авторизован</p>
+        <>{(window.location.href = "/login")}</>
       )}
-    </div>
+    </>
   );
 };
 
