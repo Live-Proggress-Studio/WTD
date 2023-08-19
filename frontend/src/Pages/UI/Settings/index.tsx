@@ -4,7 +4,6 @@ import { useAuth } from "@Hooks/useAuth";
 import RadioToggler from "@Features/DarkMode/RadioToggler";
 import CheckBoxToggler from "@Features/DarkMode/CheckBoxToggler";
 import { KBMap } from "./KBMap";
-import jwtdecode from "jwt-decode";
 import { useCookies } from "react-cookie";
 import "./settings.scss";
 import useApi from "@Hooks/useAPI";
@@ -14,7 +13,7 @@ const Settings = () => {
 
   const handleLogout = async () => {
     try {
-      // ? Вызываем хендлен `logout` на сервере
+      // ? Вызываем хендлер `logout` на сервере
       await useApi("logout", "POST", {}, true);
       setIsAuthenticated(false);
       // removeCookie("Authorization"); //! Не рпботает, т.к мы устанавливаем cookie с сервеа

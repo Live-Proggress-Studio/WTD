@@ -1,4 +1,5 @@
 @import "@Styles/Fonts.scss";
+@import "@Styles/Mixins.scss";
 
 /* App Variables */
 :root {
@@ -105,3 +106,12 @@ code {
   border-radius: 7px;
   padding: 5px;
 }
+
+
+// @media (prefers-color-scheme: light) {
+//   @include light-color-scheme;
+// }
+
+// @media (prefers-color-scheme: dark) {
+//   @include dark-color-scheme;
+// }

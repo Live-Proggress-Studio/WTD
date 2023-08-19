@@ -15,7 +15,7 @@ const UserProfile = () => {
     }
   }, [isAuthenticated]);
 
-  console.log(userModel);
+  // console.log(userModel);
 
   return (
     <>

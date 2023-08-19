@@ -8,13 +8,41 @@ const ThemeContext = createContext({
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider: React.FC = ({ children }) => {
-  const [theme, setTheme] = useState(() => localStorage.getItem("selectedTheme") || "light");
+  const [theme, setTheme] = useState(() => {
+    const userPreferredTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+    return localStorage.getItem("selectedTheme") || userPreferredTheme;
+  });
 
   useEffect(() => {
     const currentTheme = localStorage.getItem("selectedTheme") || "light";
     document.querySelector("body")?.setAttribute("data-theme", currentTheme);
     setTheme(currentTheme);
   }, []);
+
+  useEffect(() => {
+    document.querySelector("body").setAttribute("data-theme", theme);
+
+    setTheme(() => localStorage.getItem("selectedTheme") || "");
+    const darkModeMediaQuery = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    );
+
+    // @Обработчик изменения темы ОС
+    const handleDarkModeChange = (event) => {
+      const newTheme = event.matches ? "dark" : "light";
+      setTheme(newTheme);
+      localStorage.setItem("selectedTheme", newTheme);
+    };
+
+    darkModeMediaQuery.addEventListener("change", handleDarkModeChange);
+
+    return () => {
+      darkModeMediaQuery.addEventListener("change", handleDarkModeChange);
+    };
+  }, [theme]);
 
   const handleThemeChange = (selectedTheme: string) => {
     setTheme(selectedTheme);
@@ -23,7 +51,9 @@ export const ThemeProvider: React.FC = ({ children }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme: handleThemeChange }}>
+    <ThemeContext.Provider
+      value={{ theme: theme, setTheme: handleThemeChange }}
+    >
       {children}
     </ThemeContext.Provider>
   );

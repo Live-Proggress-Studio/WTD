@@ -2,31 +2,10 @@ import { useState, useEffect } from "react";
 import blueMoon from "../icons/blueMoon.svg";
 import blueSun from "../icons/blueSun.svg";
 import "./CheckBoxToggler.scss";
+import { useThemeManager } from "@/Shared/Hooks/useThemeManager";
 
 const CheckBoxToggler = () => {
-  const [theme, setTheme] = useState<string>("");
-
-  useEffect(() => {
-    document.querySelector("body").setAttribute("data-theme", theme);
-
-    setTheme(() => localStorage.getItem("selectedTheme") || "");
-    const darkModeMediaQuery = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    );
-
-    // @Обработчик изменения темы ОС
-    const handleDarkModeChange = (event) => {
-      const newTheme = event.matches ? "dark" : "light";
-      setTheme(newTheme);
-      localStorage.setItem("selectedTheme", newTheme);
-    };
-
-    darkModeMediaQuery.addEventListener("change", handleDarkModeChange);
-
-    return () => {
-      darkModeMediaQuery.addEventListener("change", handleDarkModeChange);
-    };
-  }, [theme]);
+  const { theme, setTheme } = useThemeManager();
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
