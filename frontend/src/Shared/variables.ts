@@ -12,6 +12,8 @@ export const APP = {
   VERSION: "0.0.1",
   AUTHOR: "LPS - Live Progress Studio",
   DESCRIPTION: "WTD - What To DO | Life calendar & Planner",
+  //! Стоит попробовать использовать в ссылках на источники метод `dns-prefetching`
+  //* пример: <a rel="dns-prefetching" href={APP.GITHUB}></a>
   SOCIAL_MEDIA: {
     TELEGRAM: "https://t.me/lps_studio",
     GITHUB: "https://github.com/Live-Proggress-Studio/WTD",
