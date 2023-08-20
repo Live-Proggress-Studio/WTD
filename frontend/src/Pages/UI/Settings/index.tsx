@@ -4,23 +4,31 @@ import { useAuth } from "@Hooks/useAuth";
 import RadioToggler from "@Features/DarkMode/RadioToggler";
 import CheckBoxToggler from "@Features/DarkMode/CheckBoxToggler";
 import { KBMap } from "./KBMap";
-import { useCookies } from "react-cookie";
 import "./settings.scss";
 import useApi from "@Hooks/useAPI";
+import Cookies from "universal-cookie";
 
 const Settings = () => {
   const { isAuthenticated, setIsAuthenticated } = useAuth();
 
   const handleLogout = async () => {
+    const cookies = new Cookies();
+
+    //? рпробуем удалить cookie силами React
     try {
-      // ? Вызываем хендлер `logout` на сервере
-      await useApi("logout", "POST", {}, true);
-      setIsAuthenticated(false);
-      // removeCookie("Authorization"); //! Не рпботает, т.к мы устанавливаем cookie с сервеа
-      window.location.href = "/login";
+      cookies.remove("Authorization");
     } catch (error) {
-      console.error("Ошибка выхода:", error);
+      console.error("Ошибка удаления cookie:", error);
+      //? Если же способ выше не сработал и cookie "Authorization" остались, то отправляем запрос на удаление cookie на сервер
+      try {
+        await useApi("logout", "POST", {}, true);
+        setIsAuthenticated(false);
+      } catch (apiError) {
+        console.error("Ошибка запроса на сервере:", apiError);
+      }
     }
+    //? Если cookie "Authorization" были удалены, то перенаправляем пользователя на страницу входа
+    window.location.href = "/login";
   };
 
   return (
@@ -71,9 +79,7 @@ const Settings = () => {
           </div>
         </>
       ) : (
-        <div className="settings">
-          {window.location.href = "/login"}
-        </div>
+        <div className="settings">{(window.location.href = "/login")}</div>
       )}
     </>
   );

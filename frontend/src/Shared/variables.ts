@@ -9,7 +9,7 @@ export const API_URL = import.meta.env.VITE_REACT_API_URL
 //@ Перемнные с описанием приложения и источниками
 export const APP = {
   NAME: "WTD",
-  VERSION: "0.0.1",
+  VERSION: "0.0.2 alpha",
   AUTHOR: "LPS - Live Progress Studio",
   DESCRIPTION: "WTD - What To DO | Life calendar & Planner",
   //! Стоит попробовать использовать в ссылках на источники метод `dns-prefetching`

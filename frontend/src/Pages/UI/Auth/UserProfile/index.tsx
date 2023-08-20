@@ -3,6 +3,7 @@ import Cookies from "universal-cookie";
 import { useAuth } from "@Hooks/useAuth";
 import useApi from "@Hooks/useAPI";
 import { userModel } from "@/Shared/Models/userModel";
+import "./userProfile.scss";
 
 const UserProfile = () => {
   const { isAuthenticated } = useAuth();
@@ -21,14 +22,15 @@ const UserProfile = () => {
     <>
       {isAuthenticated ? (
         <>
-          <div className="user-profile container">
+          <div className="user-profile">
             {isAuthenticated ? (
-              <div className="container">
+              <>
+                <h1>Аккаунт</h1>
                 <p>User ID: {userModel?.email}</p>
                 <p>User name: {userModel?.name || `User${userModel?.id}`}</p>
                 <p>Email: {userModel?.email}</p>
                 <p>CreatedAt: {userModel?.createdAt}</p>
-              </div>
+              </>
             ) : (
               <p>Пользователь не авторизован</p>
             )}

@@ -55,4 +55,4 @@ const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
   );
 };
 
-export { Sidebar };
+export default Sidebar;

@@ -7,4 +7,4 @@ const KBMap = () => {
   return <div>KBMap</div>;
 };
 
-export { KBMap };
+export default KBMap;

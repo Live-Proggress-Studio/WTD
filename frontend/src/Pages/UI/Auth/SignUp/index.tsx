@@ -14,13 +14,13 @@ const SignUP: FC = () => {
 
   const handleRegister = async (event: FormEvent) => {
     event.preventDefault();
-  
+
     //@ Валидация полей
     if (!values.email || !values.password) {
       setError("Пожалуйста, заполните все поля");
       return;
     }
-  
+
     try {
       const response = await useApi("signup", "POST", values);
       console.log("Успешная регистрация!", response);
@@ -67,19 +67,16 @@ const SignUP: FC = () => {
             />
           </div>
         </div>
-        <button className="btn auth-btn">
-          Зарегистрироваться
-        </button>
+        <button className="btn auth-btn">Зарегистрироваться</button>
 
         <div className="auth-form__subtext">
           <span>Уже есть аккаунт? </span>
           <Link to="/login">Войдите!</Link>
         </div>
         {error && <div className="auth-form__error">{error}</div>}
-
       </form>
     </div>
   );
 };
 
-export { SignUP };
+export default SignUP;

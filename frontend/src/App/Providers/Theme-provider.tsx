@@ -1,4 +1,10 @@
-import React, { useState, useEffect, createContext, useContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  createContext,
+  useContext,
+  ReactNode,
+} from "react";
 
 const ThemeContext = createContext({
   theme: "light",
@@ -7,7 +13,11 @@ const ThemeContext = createContext({
 
 export const useTheme = () => useContext(ThemeContext);
 
-export const ThemeProvider: React.FC = ({ children }) => {
+interface ThemeProviderProps {
+  children: ReactNode;
+}
+
+const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState(() => {
     const userPreferredTheme = window.matchMedia("(prefers-color-scheme: dark)")
       .matches
@@ -31,7 +41,7 @@ export const ThemeProvider: React.FC = ({ children }) => {
     );
 
     // @Обработчик изменения темы ОС
-    const handleDarkModeChange = (event) => {
+    const handleDarkModeChange = (event: any) => {
       const newTheme = event.matches ? "dark" : "light";
       setTheme(newTheme);
       localStorage.setItem("selectedTheme", newTheme);
@@ -58,3 +68,5 @@ export const ThemeProvider: React.FC = ({ children }) => {
     </ThemeContext.Provider>
   );
 };
+
+export { ThemeProvider };

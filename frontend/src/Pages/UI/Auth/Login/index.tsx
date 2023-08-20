@@ -2,10 +2,8 @@ import React, { FC, FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "@Hooks/useForm";
 import { useAuth } from "@Hooks/useAuth";
-import { useCookies } from "react-cookie";
 import useApi from "@Hooks/useAPI";
 import "../auth.scss";
-import { stringify } from "querystring";
 
 const Login = () => {
   const { setIsAuthenticated } = useAuth();
@@ -83,4 +81,4 @@ const Login = () => {
   );
 };
 
-export { Login };
+export default Login;
