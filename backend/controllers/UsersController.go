@@ -4,8 +4,9 @@ import (
 	"net/http"
 	"os"
 	"time"
-	"wtd/initializers"
-	"wtd/models"
+
+	"github.com/Live-Proggress-Studio/WTD/initializers"
+	"github.com/Live-Proggress-Studio/WTD/models"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"

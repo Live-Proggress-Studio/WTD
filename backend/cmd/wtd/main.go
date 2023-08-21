@@ -1,8 +1,8 @@
 package main
 
 import (
-	"wtd/initializers"
-	"wtd/pkg/routes"
+	"github.com/Live-Proggress-Studio/WTD/initializers"
+	"github.com/Live-Proggress-Studio/WTD/pkg/routes"
 )
 
 func init() {

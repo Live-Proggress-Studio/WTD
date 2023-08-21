@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 // import { Outlet } from "react-router-dom";
 import Cookies from "universal-cookie";
 import Header from "@/Shared/UI/Header";

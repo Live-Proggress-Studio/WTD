@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"wtd/controllers"
-	"wtd/middleware"
+	"github.com/Live-Proggress-Studio/WTD/controllers"
+	"github.com/Live-Proggress-Studio/WTD/middleware"
 
 	"github.com/gin-gonic/gin"
 )

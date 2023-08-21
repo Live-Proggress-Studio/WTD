@@ -1,7 +1,7 @@
 package initializers
 
 import (
-	"wtd/models"
+	"github.com/Live-Proggress-Studio/WTD/models"
 )
 
 func SyncDB() {
