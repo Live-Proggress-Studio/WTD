@@ -1,9 +1,8 @@
 version: '3'
 services:
   backend:
-    build:
-      # context: ./backend
-      dockerfile: ./backend/Dockerfile
+    build: ./backend
+      # dockerfile: ./backend/Dockerfile
     ports:
       - "4000:4000"
     env_file:
@@ -17,9 +16,8 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
   frontend:
-    build:
-      # context: frontend
-      dockerfile: ./frontend/Dockerfile
+    build: ./frontend
+      # dockerfile: ./frontend/Dockerfile
     ports:
       - "8080:8080"
     env_file:

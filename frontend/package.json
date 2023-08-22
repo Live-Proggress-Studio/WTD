@@ -7,7 +7,8 @@
     "dev": "vite --port 8080",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview --port 8080 --open"
+    "preview": "vite preview --port 8080 --open",
+    "prod": "vite preview --port 8080"
   },
   "dependencies": {
     "@types/compose-function": "^0.0.30",
