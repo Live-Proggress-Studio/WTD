@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 *.lock
+*.mjs
 
 # Editor directories and files
 .vscode/*
