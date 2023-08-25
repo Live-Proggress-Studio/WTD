@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/Live-Proggress-Studio/WTD/initializers"
+	"github.com/Live-Proggress-Studio/WTD/pkg/db"
 	"github.com/Live-Proggress-Studio/WTD/pkg/routes"
 )
 
@@ -12,6 +13,10 @@ func init() {
 }
 
 func main() {
+
+	// DB backup
+	go db.MakeDBDump()
+
 	// @SETUP ROUTES
 	r := routes.SetupRoutes()
 
