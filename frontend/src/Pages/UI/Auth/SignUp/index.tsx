@@ -1,4 +1,4 @@
-import React, { FC, FormEvent, useState } from "react";
+import { FC, FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "@Hooks/useForm";
 import useApi from "@Hooks/useAPI";
@@ -10,7 +10,7 @@ const SignUP: FC = () => {
     password: "",
   });
 
-  const [error, setError] = useState<string | null>(null); // Добавляем состояние для ошибки
+  const [error, setError] = useState<string | null>(null);
 
   const handleRegister = async (event: FormEvent) => {
     event.preventDefault();
@@ -29,7 +29,7 @@ const SignUP: FC = () => {
       setTimeout(() => {
         window.location.href = "/login";
       }, 1000);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Ошибка регистрации:", error);
       if (error.message === "Пользователь с таким email уже существует") {
         setError("Пользователь с таким email уже существует");

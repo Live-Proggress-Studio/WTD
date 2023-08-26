@@ -1,4 +1,3 @@
-import React from 'react';
 import { symbols } from './Utils/symbols'
 //@ Глобальные переменные
 

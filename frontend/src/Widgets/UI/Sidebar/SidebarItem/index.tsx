@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import "./SidebarItem.scss";
 
-const SidebarItem = ({ icon, text, link }) => {
+interface SidebarItemProps {
+  icon: string,
+  text: string,
+  link: string,
+}
+
+const SidebarItem: React.FC<SidebarItemProps> = ({ icon, text, link }) => {
   return (
     <div className="sidebar-item">
       <Link to={link}>

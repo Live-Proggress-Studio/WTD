@@ -1,29 +1,40 @@
-import React, { useEffect } from "react";
+import { useEffect, KeyboardEvent } from "react";
 import { SidebarItem } from "./SidebarItem";
 import sidebarLinks from "./SideBarLinks";
 import "./sidebar.scss";
 import { useAuth } from "@/Shared/Hooks/useAuth";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
-  const { isAuthenticated } = useAuth();
+interface SidebarProps {
+  isSidebarVisible: boolean;
+  setIsSidebarVisible: (visible: boolean) => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({
+  isSidebarVisible,
+  setIsSidebarVisible,
+}) => {
+  const isAuthenticated = useAuth();
 
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "m" || event.key === "ь") {
-        const activeElement = document.activeElement;
+        const activeElement = document.activeElement as HTMLElement | null;
         const isInputFocused =
-          activeElement.tagName === "INPUT" && activeElement.type === "text";
+          activeElement?.tagName === "INPUT" &&
+          activeElement?.getAttribute("type") === "text";
 
         if (!isInputFocused) {
+          // @ts-ignore
           setIsSidebarVisible((prevIsSidebarVisible) => !prevIsSidebarVisible);
         }
       }
     };
-
+    // @ts-ignore
     document.addEventListener("keydown", handleKeyDown);
 
     return () => {
+      // @ts-ignore
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [setIsSidebarVisible]);

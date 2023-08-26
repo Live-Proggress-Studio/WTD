@@ -13,8 +13,8 @@ func init() {
 }
 
 func main() {
-
-	// DB backup
+	// @DB backup
+	// ? Make DB Dump every 4 hours
 	go db.MakeDBDump()
 
 	// @SETUP ROUTES

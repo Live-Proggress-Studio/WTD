@@ -1,13 +1,18 @@
-import ky from "ky";
+import ky, { Options } from "ky";
 import { API_URL } from "@Shared/variables";
 
 const api = ky.create({
   prefixUrl: API_URL,
 });
 
-async function useApi(url, method, data = null, useCookies = false) {
+async function useApi(
+  url: string,
+  method: string,
+  data: any = null,
+  useCookies: boolean = false
+) {
   try {
-    const options = {
+    const options: Options = {
       method,
       headers: {},
     };

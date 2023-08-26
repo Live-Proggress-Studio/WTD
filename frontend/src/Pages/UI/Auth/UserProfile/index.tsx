@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
-import Cookies from "universal-cookie";
+import { useEffect } from "react";
 import { useAuth } from "@Hooks/useAuth";
 import useApi from "@Hooks/useAPI";
 import { userModel } from "@/Shared/Models/userModel";
 import "./userProfile.scss";
 
 const UserProfile = () => {
-  const { isAuthenticated } = useAuth();
+  const isAuthenticated = useAuth();
 
   useEffect(() => {
     if (isAuthenticated) {

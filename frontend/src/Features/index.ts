@@ -1,2 +1,3 @@
-import RadioToggler from './DarkMode/RadioToggler';
-import CheckBoxToggler from './DarkMode/CheckBoxToggler';
+//@ Export Theme Togglers
+export {default as RadioToggler} from './DarkMode/RadioToggler';
+export {default as CheckBoxToggler} from './DarkMode/CheckBoxToggler';

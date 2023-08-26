@@ -8,6 +8,7 @@ import React, {
 
 const ThemeContext = createContext({
   theme: "light",
+  // @ts-ignore
   setTheme: (theme: string) => {},
 });
 
@@ -33,15 +34,23 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    document.querySelector("body").setAttribute("data-theme", theme);
+    const body = document.querySelector("body");
+    if (body) {
+      body.setAttribute("data-theme", theme);
+    }
 
-    setTheme(() => localStorage.getItem("selectedTheme") || "");
+    const userPreferredTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+
+    setTheme(() => localStorage.getItem("selectedTheme") || userPreferredTheme);
+
     const darkModeMediaQuery = window.matchMedia(
       "(prefers-color-scheme: dark)"
     );
 
-    // @Обработчик изменения темы ОС
-    const handleDarkModeChange = (event: any) => {
+    const handleDarkModeChange = (event: MediaQueryListEvent) => {
       const newTheme = event.matches ? "dark" : "light";
       setTheme(newTheme);
       localStorage.setItem("selectedTheme", newTheme);
@@ -50,7 +59,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     darkModeMediaQuery.addEventListener("change", handleDarkModeChange);
 
     return () => {
-      darkModeMediaQuery.addEventListener("change", handleDarkModeChange);
+      darkModeMediaQuery.removeEventListener("change", handleDarkModeChange);
     };
   }, [theme]);
 

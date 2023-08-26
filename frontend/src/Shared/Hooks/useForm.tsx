@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 
-function useForm(initialValues) {
-  const [values, setValues] = useState(initialValues);
+interface Values {
+  [key: string]: string;
+}
 
-  const handleChange = (event) => {
+function useForm(initialValues: Values) {
+  const [values, setValues] = useState<Values>(initialValues);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setValues((prevValues) => ({
       ...prevValues,

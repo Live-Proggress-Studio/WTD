@@ -1,14 +1,12 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@Hooks/useAuth";
-import RadioToggler from "@Features/DarkMode/RadioToggler";
-import CheckBoxToggler from "@Features/DarkMode/CheckBoxToggler";
-import { KBMap } from "./KBMap";
-import "./settings.scss";
+import { CheckBoxToggler } from "@/Features";
 import useApi from "@Hooks/useAPI";
 import Cookies from "universal-cookie";
+import "./settings.scss";
 
 const Settings = () => {
+  // @ts-ignore
   const { isAuthenticated, setIsAuthenticated } = useAuth();
 
   const handleLogout = async () => {
@@ -21,7 +19,7 @@ const Settings = () => {
       console.error("Ошибка удаления cookie:", error);
       //? Если же способ выше не сработал и cookie "Authorization" остались, то отправляем запрос на удаление cookie на сервер
       try {
-        await useApi("logout", "POST", {}, true);
+        await useApi("logout", "POST", null, true);
         setIsAuthenticated(false);
       } catch (apiError) {
         console.error("Ошибка запроса на сервере:", apiError);

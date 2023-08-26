@@ -5,13 +5,14 @@ const useThemeManager = () => {
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
+    // @ts-ignore
     document.querySelector("body").setAttribute("data-theme", theme);
 
     const darkModeMediaQuery = window.matchMedia(
       "(prefers-color-scheme: dark)"
     );
 
-    const handleDarkModeChange = (event) => {
+    const handleDarkModeChange = (event: MediaQueryListEvent) => {
       const newTheme = event.matches ? "dark" : "light";
       setTheme(newTheme);
       localStorage.setItem("selectedTheme", newTheme);

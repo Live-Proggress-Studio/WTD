@@ -1,5 +1,5 @@
 const udata = localStorage.getItem("userdata");
-const userData = JSON.parse(udata);
+const userData = udata !== null ? JSON.parse(udata) : null;
 
 export const data = userData;
 export const userModel = {

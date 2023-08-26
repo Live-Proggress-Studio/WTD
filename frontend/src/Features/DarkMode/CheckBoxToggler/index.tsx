@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import blueMoon from "../icons/blueMoon.svg";
 import blueSun from "../icons/blueSun.svg";
 import "./CheckBoxToggler.scss";

@@ -1,10 +1,16 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useEffect,
+  useState } from "react";
+import { ResponseData } from "@/Shared/Interfaces";
 import useApi from "@Hooks/useAPI";
 
 export const AuthContext = createContext(false);
 
-function AuthProvider({ children }) {
+function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(
+    //@ts-ignore
     JSON.parse(localStorage.getItem("isAuthenticated")) || false
   );
 
@@ -19,7 +25,7 @@ function AuthProvider({ children }) {
 
   const checkAuthStatus = async () => {
     try {
-      const response = await useApi("check-auth", "GET", null, true);
+      const response = await useApi("check-auth", "GET", null, true) as ResponseData;
       console.log(response?.message);
 
       if (response.message === "Authorized") {
@@ -33,6 +39,7 @@ function AuthProvider({ children }) {
   };
 
   return (
+    //@ts-ignore
     <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
       {children}
     </AuthContext.Provider>

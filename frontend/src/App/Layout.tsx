@@ -1,25 +1,25 @@
-import { useState, useEffect } from "react";
-// import { Outlet } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import Cookies from "universal-cookie";
-import Header from "@/Shared/UI/Header";
-import Sidebar from "@/Widgets/UI/Sidebar";
+import { Header } from "@/Shared/UI";
+import { Sidebar } from "@/Widgets";
 import { useAuth } from "@Hooks/useAuth";
 
 //? Layout Component - содержит компоненты виджетов по-умолчанию, которые необходимо отображать на каждой странице
 //* Components: header, sidebar
 
-const Layout = () => {
+const Layout: React.FC = () => {
   // @cookies
   const cookies = new Cookies();
   //@ Authorization
-  const { isAuthenticated, setIsAuthenticated } = useAuth();
+  const isAuthenticated = useAuth();
 
   //@ Sidebar
-  const savedSidebarState = JSON.parse(localStorage.getItem("sidebarVisible"));
+  const savedSidebarState: boolean | null = JSON.parse(// @ts-ignore
+    localStorage.getItem("sidebarVisible")
+  );
   const [isSidebarVisible, setIsSidebarVisible] = useState(
     savedSidebarState !== null ? savedSidebarState : true
   );
-  // const location = useLocation();
 
   useEffect(() => {
     localStorage.setItem("sidebarVisible", JSON.stringify(isSidebarVisible));
@@ -30,7 +30,7 @@ const Layout = () => {
 
   //@ Search shortcuts
   const handleSearchShortcut = () => {
-    console.log("Search shortcut pressed");
+    return console.log("Search shortcut pressed");
   };
 
   return (
@@ -43,15 +43,6 @@ const Layout = () => {
         isSidebarVisible={isSidebarVisible}
         setIsSidebarVisible={setIsSidebarVisible}
       />
-
-      {
-      //! <Outlet /> работает только с дочерними элементами.
-      //* Т.к наш роутинг не состоит из дочерних элементов в силу архитектуры - данный метод рендеринга компонентов не представляется возможным...
-      /* <section className="container">
-        <Suspense fallback={<div>Loading...</div>}>
-          <Outlet />
-        </Suspense>
-      </section> */}
     </>
   );
 };

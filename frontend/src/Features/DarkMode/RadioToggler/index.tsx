@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import "./RadioToggler.scss";
 
-const RadioToggler = () => {
+const RadioToggler:React.FC = ()=> {
   const [theme, setTheme] = useState<string>("");
 
   useEffect(() => {
+    // @ts-ignore
     document.querySelector("body").setAttribute("data-theme", theme);
 
     setTheme(() => localStorage.getItem("selectedTheme") || "");
@@ -13,7 +14,7 @@ const RadioToggler = () => {
     );
 
     // @Обработчик изменения темы ОС
-    const handleDarkModeChange = (event) => {
+    const handleDarkModeChange = (event: MediaQueryListEvent) => {
       const newTheme = event.matches ? "dark" : "light";
       setTheme(newTheme);
       localStorage.setItem("selectedTheme", newTheme);
