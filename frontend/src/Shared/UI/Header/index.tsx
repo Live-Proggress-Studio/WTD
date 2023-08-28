@@ -1,6 +1,6 @@
 import { useEffect, useRef, KeyboardEvent } from "react";
 import { Link } from "react-router-dom";
-import { Keyboard } from "@/Shared/variables";
+import { Keyboard } from "@Shared/variables";
 import burger from "@Icons/Burger.svg";
 import home from "@Icons/Home.svg";
 import notifications from "@Icons/notification_bel.svg";

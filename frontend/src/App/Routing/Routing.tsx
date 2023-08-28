@@ -1,30 +1,26 @@
-import { Suspense, lazy } from "react";
+import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-//@ Lazy load components
-const Settings = lazy(() => import("@Pages/UI/Settings"));
-const Main = lazy(() => import("@Pages/UI/Main"));
-const UserProfile = lazy(() => import("@/Pages/UI/Auth/UserProfile"));
-const Login = lazy(() => import("@Pages/UI/Auth/Login"));
-const SignUP = lazy(() => import("@Pages/UI/Auth/SignUp"));
-const KBMap = lazy(() => import("@Pages/UI/Settings/KBMap"));
+import { Main, Settings, UserProfile } from "./LazyComponents";
 //@ Import fallback component
 import { Loading } from "@/Shared/UI";
+import { KBMap, Login, SignUP } from "@/Pages";
+import { Pathes } from ".";
 
 //? Routing component
 /* Routes:
-* Settings
-* Main
-* UserProfile
-* Login
-* SignUP
-* KBMap
-*/
+ * Settings
+ * Main
+ * UserProfile
+ * Login
+ * SignUP
+ * KBMap
+ */
 const Routing = () => {
   return (
     <>
       <Routes>
         <Route
-          path="/"
+          path={Pathes.Home}
           element={
             <Suspense fallback={<Loading />}>
               <Main />
@@ -32,7 +28,7 @@ const Routing = () => {
           }
         />
         <Route
-          path="/users/:id"
+          path={Pathes.Account}
           element={
             <Suspense fallback={<Loading />}>
               <UserProfile />
@@ -40,7 +36,7 @@ const Routing = () => {
           }
         />
         <Route
-          path="/signup"
+          path={Pathes.Signup}
           element={
             <Suspense fallback={<Loading />}>
               <SignUP />
@@ -48,7 +44,7 @@ const Routing = () => {
           }
         />
         <Route
-          path="/login"
+          path={Pathes.Login}
           element={
             <Suspense fallback={<Loading />}>
               <Login />
@@ -56,7 +52,7 @@ const Routing = () => {
           }
         />
         <Route
-          path="/settings"
+          path={Pathes.Settings}
           element={
             <Suspense fallback={<Loading />}>
               <Settings />
@@ -64,7 +60,7 @@ const Routing = () => {
           }
         />
         <Route
-          path="/kbmap"
+          path={Pathes.KBMap}
           element={
             <Suspense fallback={<Loading />}>
               <KBMap />

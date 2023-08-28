@@ -1,3 +1,4 @@
+import { RotatingLines } from "react-loader-spinner";
 import "./loading.scss";
 
 //Todo make beautifull loading component
@@ -5,8 +6,14 @@ import "./loading.scss";
 const Loading = () => {
   return (
     <div className="container loading">
-      <div>
-        <h1>Загрузка...</h1>
+      <div className="full-center">
+        <RotatingLines
+          strokeColor="grey"
+          strokeWidth="3"
+          animationDuration="0.75"
+          width="96"
+          visible={true}
+        />
       </div>
     </div>
   );
