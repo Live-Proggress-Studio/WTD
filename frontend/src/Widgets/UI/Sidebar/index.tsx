@@ -4,6 +4,7 @@ import sidebarLinks from "./SideBarLinks";
 import "./sidebar.scss";
 import { useAuth } from "@/Shared/Hooks/useAuth";
 import { Link } from "react-router-dom";
+import { Pathes } from "@/App/Routing";
 
 interface SidebarProps {
   isSidebarVisible: boolean;
@@ -14,7 +15,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   isSidebarVisible,
   setIsSidebarVisible,
 }) => {
-  const isAuthenticated = useAuth();
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -54,10 +55,10 @@ const Sidebar: React.FC<SidebarProps> = ({
         </>
       ) : (
         <>
-          <Link to="/signup">
+          <Link to={Pathes.Signup}>
             <button>Регистрация</button>
           </Link>
-          <Link to="/login">
+          <Link to={Pathes.Login}>
             <button>Вход</button>
           </Link>
         </>

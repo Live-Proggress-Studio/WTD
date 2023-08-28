@@ -11,10 +11,11 @@ const Layout: React.FC = () => {
   // @cookies
   const cookies = new Cookies();
   //@ Authorization
-  const isAuthenticated = useAuth();
+  const { isAuthenticated } = useAuth();
 
   //@ Sidebar
-  const savedSidebarState: boolean | null = JSON.parse(// @ts-ignore
+  const savedSidebarState: boolean | null = JSON.parse(
+    // @ts-ignore
     localStorage.getItem("sidebarVisible")
   );
   const [isSidebarVisible, setIsSidebarVisible] = useState(

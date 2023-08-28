@@ -1,12 +1,13 @@
-import React, {
-  createContext,
-  ReactNode,
-  useEffect,
-  useState } from "react";
+import React, { createContext, ReactNode, useEffect, useState } from "react";
 import { ResponseData } from "@/Shared/Interfaces";
 import useApi from "@Hooks/useAPI";
 
-export const AuthContext = createContext(false);
+export interface AuthContext {
+  isAuthenticated: boolean;
+  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const AuthContext = createContext<AuthContext | undefined>(undefined);
 
 function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -25,8 +26,13 @@ function AuthProvider({ children }: { children: ReactNode }) {
 
   const checkAuthStatus = async () => {
     try {
-      const response = await useApi("check-auth", "GET", null, true) as ResponseData;
-      console.log(response?.message);
+      const response = (await useApi(
+        "check-auth",
+        "GET",
+        null,
+        true
+      )) as ResponseData;
+      // console.log(response?.message);
 
       if (response.message === "Authorized") {
         setIsAuthenticated(true);

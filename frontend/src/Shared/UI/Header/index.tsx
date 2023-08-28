@@ -5,13 +5,17 @@ import burger from "@Icons/Burger.svg";
 import home from "@Icons/Home.svg";
 import notifications from "@Icons/notification_bel.svg";
 import "./header.scss";
+import { Pathes } from "@/App/Routing";
 
 interface HeaderProps {
   onBurgerMenuClick: () => void;
   onSearchShortcut: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onBurgerMenuClick, onSearchShortcut }) => {
+const Header: React.FC<HeaderProps> = ({
+  onBurgerMenuClick,
+  onSearchShortcut,
+}) => {
   const searchInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
@@ -34,7 +38,7 @@ const Header: React.FC<HeaderProps> = ({ onBurgerMenuClick, onSearchShortcut }) 
     };
     //@ts-ignore
     document.addEventListener("keydown", handleKeyDown);
-    
+
     return () => {
       //@ts-ignore
       document.removeEventListener("keydown", handleKeyDown);
@@ -51,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({ onBurgerMenuClick, onSearchShortcut }) 
               <span className="tooltip">{Keyboard.MENU}</span>
             </div>
             <div className="menu-left__home">
-              <Link to="/">
+              <Link to={Pathes.Home}>
                 <img src={home} alt="home button" />
               </Link>
             </div>

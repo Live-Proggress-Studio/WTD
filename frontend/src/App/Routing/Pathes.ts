@@ -4,5 +4,10 @@ export enum Pathes {
   Account = "/users/:id",
   Signup = "/signup",
   Login = "/login",
-  KBMap = "kbmap",
+  Calendar = "/calendar",
+  TODO = "/todo",
+  Goals = "/goals",
+  Stats = "/stats",
+  KBMap = "/kbmap",
+  NotFound = "*",
 }

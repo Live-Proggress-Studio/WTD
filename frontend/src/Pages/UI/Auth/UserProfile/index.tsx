@@ -5,7 +5,7 @@ import { userModel } from "@/Shared/Models/userModel";
 import "./userProfile.scss";
 
 const UserProfile = () => {
-  const isAuthenticated = useAuth();
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     if (isAuthenticated) {

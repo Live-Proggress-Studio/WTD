@@ -13,10 +13,13 @@ COPY ./ ./
 RUN npm install
 # RUN yarn
 
+# RUN npm build
+
 # Install a simple HTTP server
 # RUN npm install -g serve
 
 EXPOSE 80
 
 # Start the app
+# CMD ["cp", "-rf", "./dist/*", "/var/www/wtd/publicj_html"]
 CMD ["npm", "run", "prod"]

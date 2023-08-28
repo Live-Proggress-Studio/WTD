@@ -2,7 +2,7 @@ import { useAuth } from "@Hooks/useAuth";
 import "./main.scss";
 
 const Main = () => {
-  const isAuthenticated = useAuth();
+  const { isAuthenticated } = useAuth();
 
   return (
     <div className="container">

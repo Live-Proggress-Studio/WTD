@@ -4,6 +4,7 @@ import { CheckBoxToggler } from "@/Features";
 import useApi from "@Hooks/useAPI";
 import Cookies from "universal-cookie";
 import "./settings.scss";
+import { Pathes } from "@/App/Routing";
 
 const Settings = () => {
   // @ts-ignore
@@ -51,7 +52,7 @@ const Settings = () => {
                   <h2>Сочитания клавишь</h2>
                   <div className="item-box">
                     <div className="p-20">
-                      <Link to="/kbmap">Keyboard Map</Link>
+                      <Link to={Pathes.KBMap}>Keyboard Map</Link>
                     </div>
                   </div>
                 </div>
