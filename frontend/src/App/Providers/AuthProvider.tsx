@@ -45,7 +45,6 @@ function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    //@ts-ignore
     <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
       {children}
     </AuthContext.Provider>

@@ -7,7 +7,7 @@ import "../auth.scss";
 import { ResponseData } from "@/Shared/Interfaces";
 
 const Login = () => {
-  const setIsAuthenticated = useAuth();
+  const { setIsAuthenticated } = useAuth();
 
   const { values, handleChange, resetForm } = useForm({
     email: "",
@@ -20,7 +20,12 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const response = await useApi("login", "POST", values, true) as ResponseData;
+      const response = (await useApi(
+        "login",
+        "POST",
+        values,
+        true
+      )) as ResponseData;
       localStorage.setItem("userdata", JSON.stringify(response.message));
 
       // console.log(response.message);
@@ -31,7 +36,6 @@ const Login = () => {
         window.location.href = "/";
       }, 0);
       setSuccessMessage("Вы успешно авторизовались!");
-      // @ts-ignore
       setIsAuthenticated(true);
     } catch (error) {
       console.error("Ошибка авторизации:", error);

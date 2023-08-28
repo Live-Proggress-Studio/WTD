@@ -7,7 +7,6 @@ import "./settings.scss";
 import { Pathes } from "@/App/Routing";
 
 const Settings = () => {
-  // @ts-ignore
   const { isAuthenticated, setIsAuthenticated } = useAuth();
 
   const handleLogout = async () => {
