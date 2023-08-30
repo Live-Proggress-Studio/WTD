@@ -11,7 +11,7 @@ export const AuthContext = createContext<AuthContext | undefined>(undefined);
 
 function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(
-    //@ts-ignore
+    // @ts-ignore
     JSON.parse(localStorage.getItem("isAuthenticated")) || false
   );
 

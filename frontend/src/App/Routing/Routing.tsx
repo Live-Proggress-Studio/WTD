@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
 import { Main, Settings, UserProfile } from "./LazyComponents";
+import { Route, Routes } from "react-router-dom";
 //@ Import fallback component
 import { Loading } from "@/Shared/UI";
 import { KBMap, Login, SignUP } from "@/Pages";

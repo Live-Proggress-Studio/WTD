@@ -15,7 +15,6 @@ const Layout: React.FC = () => {
 
   //@ Sidebar
   const savedSidebarState: boolean | null = JSON.parse(
-    // @ts-ignore
     localStorage.getItem("sidebarVisible")
   );
   const [isSidebarVisible, setIsSidebarVisible] = useState(
