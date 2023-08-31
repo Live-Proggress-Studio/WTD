@@ -2,10 +2,10 @@ import { Suspense } from "react";
 import { Main, Settings, UserProfile } from "./LazyComponents";
 import { Route, Routes } from "react-router-dom";
 //@ Import fallback component
-import { Loading } from "@/Shared/UI";
+import { Loading } from "@/Components";
 import { KBMap, Login, SignUP } from "@/Pages";
 import { Paths } from ".";
-import { Notification } from "@/Features";
+import { Notification } from "@/Components";
 
 //? Routing component
 /* Routes:

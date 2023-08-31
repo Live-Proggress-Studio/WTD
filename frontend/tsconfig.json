@@ -25,30 +25,28 @@
     "paths": {
       "@/*": ["src/*"],
       "@App/*": ["src/App/*"],
-      "@Entities/*": ["src/Entities/*"],
+      "@Styles/*": ["src/App/Styles/*"],
+      "@Components/*": ["src/Components/*"],
       "@Pages/*": ["src/Pages/*"],
-      "@Shared/*": ["src/Shared/*"],
-      "@Hooks/*": ["src/Shared/Hooks/*"],
-      "@Widgets/*": ["src/Widgets/*"],
-      "@Features/*": ["src/Features/*"],
-      "@Styles/*": ["src/Shared/Styles/*"],
-      "@imgs/*": ["src/Shared/assets/img/*"],
-      "@Icons/*": ["src/Shared/assets/icons/*"]
+      "@Utils/*": ["src/Utils/*"],
+      "@Hooks/*": ["src/Utils/Hooks/*"],
+      "@Services/*": ["src/Services/*"],
+      "@Imgs/*": ["src/assets/img/*"],
+      "@Icons/*": ["src/assets/icons/*"]
     }
   },
   "include": [
     "src/**/*",
     "src/App/**/*",
-    "src/Entities/**/*",
+    "src/App/Styles/**/*",
+    "src/Layouts/**/*",
+    "src/Components/**/*",
     "src/Pages/**/*",
-    "src/Shared/**/*",
-    "src/Shared/Hooks/**/*",
-    "src/Widgets/**/*",
-    "src/Features/**/*",
-    "src/Shared/Styles/**/*",
-    "src/Shared/assets/img/**/*",
-    "src/Shared/assets/icons/**/*",
-    "src/Pages/ui/**/*"
+    "src/Utils/**/*",
+    "src/Utils/Hooks/**/*",
+    "src/Services/**/*",
+    "src/assets/img/**/*",
+    "src/assets/icons/**/*",
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

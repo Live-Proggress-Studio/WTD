@@ -2,9 +2,9 @@
 export {
     default as Settings,
     default as KBMap
-} from "./UI/Settings";
+} from "./Settings";
 //@ Export Authorization
 export {
     SignUP,
     Login 
-} from './UI/Auth'
+} from './Auth'

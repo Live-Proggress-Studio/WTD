@@ -1,5 +1,5 @@
 import { ThemeProvider } from "./Providers/Theme-provider";
-import { default as Layout } from "./Layout";
+import { default as Layout } from "../Layouts/Layout";
 import { default as Routing } from "./Routing/Routing";
 import { default as AuthProvider } from "./Providers/AuthProvider";
 import "normalize.css";
