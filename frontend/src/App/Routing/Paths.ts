@@ -1,4 +1,4 @@
-export enum Pathes {
+export enum Paths {
   Home = "/",
   Settings = "/settings",
   Account = "/users/:id",
@@ -10,4 +10,6 @@ export enum Pathes {
   Stats = "/stats",
   KBMap = "/kbmap",
   NotFound = "*",
+  // development paths
+  Notify = "/notify",
 }

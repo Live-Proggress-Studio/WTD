@@ -4,7 +4,7 @@ import sidebarLinks from "./SideBarLinks";
 import "./sidebar.scss";
 import { useAuth } from "@/Shared/Hooks/useAuth";
 import { Link } from "react-router-dom";
-import { Pathes } from "@/App/Routing";
+import { Paths } from "@/App/Routing";
 
 interface SidebarProps {
   isSidebarVisible: boolean;
@@ -55,10 +55,10 @@ const Sidebar: React.FC<SidebarProps> = ({
         </>
       ) : (
         <>
-          <Link to={Pathes.Signup}>
+          <Link to={Paths.Signup}>
             <button>Регистрация</button>
           </Link>
-          <Link to={Pathes.Login}>
+          <Link to={Paths.Login}>
             <button>Вход</button>
           </Link>
         </>

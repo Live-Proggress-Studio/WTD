@@ -5,7 +5,7 @@ import burger from "@Icons/Burger.svg";
 import home from "@Icons/Home.svg";
 import notifications from "@Icons/notification_bel.svg";
 import "./header.scss";
-import { Pathes } from "@/App/Routing";
+import { Paths } from "@/App/Routing";
 
 interface HeaderProps {
   onBurgerMenuClick: () => void;
@@ -55,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({
               <span className="tooltip">{Keyboard.MENU}</span>
             </div>
             <div className="menu-left__home">
-              <Link to={Pathes.Home}>
+              <Link to={Paths.Home}>
                 <img src={home} alt="home button" />
               </Link>
             </div>

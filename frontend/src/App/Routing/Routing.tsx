@@ -4,7 +4,8 @@ import { Route, Routes } from "react-router-dom";
 //@ Import fallback component
 import { Loading } from "@/Shared/UI";
 import { KBMap, Login, SignUP } from "@/Pages";
-import { Pathes } from ".";
+import { Paths } from ".";
+import { Notification } from "@/Features";
 
 //? Routing component
 /* Routes:
@@ -14,13 +15,14 @@ import { Pathes } from ".";
  * Login
  * SignUP
  * KBMap
+ * Dev Routes: notify
  */
 const Routing = () => {
   return (
     <>
       <Routes>
         <Route
-          path={Pathes.Home}
+          path={Paths.Home}
           element={
             <Suspense fallback={<Loading />}>
               <Main />
@@ -28,7 +30,7 @@ const Routing = () => {
           }
         />
         <Route
-          path={Pathes.Account}
+          path={Paths.Account}
           element={
             <Suspense fallback={<Loading />}>
               <UserProfile />
@@ -36,7 +38,7 @@ const Routing = () => {
           }
         />
         <Route
-          path={Pathes.Signup}
+          path={Paths.Signup}
           element={
             <Suspense fallback={<Loading />}>
               <SignUP />
@@ -44,7 +46,7 @@ const Routing = () => {
           }
         />
         <Route
-          path={Pathes.Login}
+          path={Paths.Login}
           element={
             <Suspense fallback={<Loading />}>
               <Login />
@@ -52,7 +54,7 @@ const Routing = () => {
           }
         />
         <Route
-          path={Pathes.Settings}
+          path={Paths.Settings}
           element={
             <Suspense fallback={<Loading />}>
               <Settings />
@@ -60,10 +62,18 @@ const Routing = () => {
           }
         />
         <Route
-          path={Pathes.KBMap}
+          path={Paths.KBMap}
           element={
             <Suspense fallback={<Loading />}>
               <KBMap />
+            </Suspense>
+          }
+        />
+        <Route
+          path={Paths.Notify}
+          element={
+            <Suspense fallback={<Loading />}>
+              <Notification />
             </Suspense>
           }
         />

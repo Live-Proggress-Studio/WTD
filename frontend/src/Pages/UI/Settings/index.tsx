@@ -4,7 +4,7 @@ import { CheckBoxToggler } from "@/Features";
 import useApi from "@Hooks/useAPI";
 import Cookies from "universal-cookie";
 import "./settings.scss";
-import { Pathes } from "@/App/Routing";
+import { Paths } from "@/App/Routing";
 
 const Settings = () => {
   const { isAuthenticated, setIsAuthenticated } = useAuth();
@@ -51,7 +51,7 @@ const Settings = () => {
                   <h2>Сочитания клавишь</h2>
                   <div className="item-box">
                     <div className="p-20">
-                      <Link to={Pathes.KBMap}>Keyboard Map</Link>
+                      <Link to={Paths.KBMap}>Keyboard Map</Link>
                     </div>
                   </div>
                 </div>
