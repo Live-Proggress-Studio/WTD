@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FC, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { Paths } from '@/App/Routing';
 import { useForm } from '@Hooks/useForm';
@@ -9,7 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import { notification } from '@/Features';
 import '../auth.scss';
 
-const Login = () => {
+const Login: FC = () => {
   const { setIsAuthenticated } = useAuth();
 
   const { values, handleChange, resetForm } = useForm({
@@ -19,6 +19,12 @@ const Login = () => {
 
   const handleLogin = async (event: FormEvent) => {
     event.preventDefault();
+
+    //@ Валидация полей
+    if (!values.email || !values.password) {
+      notification.warn('Пожалуйста, заполните все поля!');
+      return;
+    }
 
     try {
       const response = (await useApi(
