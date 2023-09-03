@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { useTheme } from "@/App/Providers/Theme-provider";
+import { useTheme } from "@/App/Providers/ThemeProvider";
 
 const useThemeManager = () => {
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     // @ts-ignore
-    document.querySelector("body").setAttribute("data-theme", theme);
+    document.querySelector<HTMLBodyElement>("body").setAttribute("data-theme", theme);
 
     const darkModeMediaQuery = window.matchMedia(
       "(prefers-color-scheme: dark)"

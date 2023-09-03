@@ -1,6 +1,5 @@
 import React, { createContext, ReactNode, useEffect, useState } from "react";
 import { ResponseData } from "@/Services/Interfaces";
-import useApi from "@Hooks/useAPI";
 
 export interface AuthContext {
   isAuthenticated: boolean;

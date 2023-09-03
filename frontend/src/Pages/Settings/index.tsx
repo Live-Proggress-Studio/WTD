@@ -1,37 +1,15 @@
 import { Link } from "react-router-dom";
-import { useAuth } from "@Hooks/useAuth";
 import { CheckBoxToggler } from "@/Components";
-import useApi from "@Hooks/useAPI";
-import Cookies from "universal-cookie";
+// import useApi from "@Hooks/useAPI";
 import { Paths } from "@/App/Routing";
 import "./settings.scss";
 
 const Settings = () => {
-  const { isAuthenticated, setIsAuthenticated } = useAuth();
 
-  const handleLogout = async () => {
-    const cookies = new Cookies();
-
-    //? рпробуем удалить cookie силами React
-    try {
-      cookies.remove("Authorization");
-    } catch (error) {
-      console.error("Ошибка удаления cookie:", error);
-      //? Если же способ выше не сработал и cookie "Authorization" остались, то отправляем запрос на удаление cookie на сервер
-      try {
-        await useApi("logout", "POST", null, true);
-        setIsAuthenticated(false);
-      } catch (apiError) {
-        console.error("Ошибка запроса на сервере:", apiError);
-      }
-    }
-    //? Если cookie "Authorization" были удалены, то перенаправляем пользователя на страницу входа
-    window.location.href = "/login";
-  };
+  
 
   return (
     <>
-      {isAuthenticated ? (
         <>
           <div className="settings">
             <div className="settings__title">
@@ -66,7 +44,7 @@ const Settings = () => {
                     <button
                       type="button"
                       className="button"
-                      onClick={handleLogout}
+                      // onClick={}
                     >
                       Выйти
                     </button>
@@ -76,9 +54,7 @@ const Settings = () => {
             </div>
           </div>
         </>
-      ) : (
-        <div className="settings">{(window.location.href = "/login")}</div>
-      )}
+        {/* <div className="settings">{(window.location.href = "/login")}</div> */}
     </>
   );
 };

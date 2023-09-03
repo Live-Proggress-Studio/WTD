@@ -1,49 +1,21 @@
-import { useEffect, useRef, KeyboardEvent } from "react";
+import { FC } from "react";
 import { Link } from "react-router-dom";
-import { Keyboard } from "@Utils/variables";
+import { Keyboard } from "@/Utils/Constants/variables";
 import burger from "@Icons/Burger.svg";
 import home from "@Icons/Home.svg";
 import notifications from "@Icons/notification_bel.svg";
-import "./header.scss";
+import "./Header.scss";
 import { Paths } from "@/App/Routing";
 
 interface HeaderProps {
   onBurgerMenuClick: () => void;
-  onSearchShortcut: () => void;
+  onSearchShortcut?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({
-  onBurgerMenuClick,
-  onSearchShortcut,
-}) => {
-  const searchInputRef = useRef<HTMLInputElement | null>(null);
+const Header: FC<HeaderProps> = ({onBurgerMenuClick}) => {
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (
-        (event.ctrlKey || event.metaKey) &&
-        (event.key === "f" || event.key === "а")
-      ) {
-        event.preventDefault();
-        onSearchShortcut();
-        if (searchInputRef.current) {
-          searchInputRef.current.focus();
-        }
-      } else if (event.key === "Escape") {
-        // Разфокусировка поля ввода при нажатии Escape
-        if (searchInputRef.current) {
-          searchInputRef.current.blur();
-        }
-      }
-    };
-    //@ts-ignore
-    document.addEventListener("keydown", handleKeyDown);
 
-    return () => {
-      //@ts-ignore
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [onSearchShortcut]);
+  
 
   return (
     <header className="header">
@@ -62,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({
             <div className="menu-left__search">
               <div className="menu-left__search__wrapper">
                 <input
-                  ref={searchInputRef}
+                  // ref={''}
                   type="text"
                   placeholder="Найти..."
                 />

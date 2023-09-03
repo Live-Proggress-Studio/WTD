@@ -1,9 +1,9 @@
 @import "@Styles/Vars.scss";
 
 .sidebar {
-    position: fixed;
-    top: 0px;
-    left: 0;
+    
+    // top: 0px;
+    // left: 0;
     padding: 75px 13px 13px 13px;
     width: $w-sidebar;
     height: 100%;
@@ -11,8 +11,10 @@
     z-index: $ui-index-4;
     transition: transform 0.3s ease;
     transform: translateX(0);
+
 }
 
 .sidebar.hidden {
-    transform: translateX(-100%);
+    transition: width 0.4s;
+    width: 0;
 }
