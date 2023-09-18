@@ -1,5 +1,6 @@
-import React, { createContext, ReactNode, useEffect, useState } from "react";
-import { ResponseData } from "@/Services/Interfaces";
+import React, { createContext, ReactNode, useEffect, useState } from 'react';
+import { ResponseData } from '@/Services/Interfaces';
+import { request } from '@/Utils/Hooks/useApi';
 
 export interface AuthContext {
   isAuthenticated: boolean;
@@ -11,31 +12,31 @@ export const AuthContext = createContext<AuthContext | undefined>(undefined);
 function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(
     // @ts-ignore
-    JSON.parse(localStorage.getItem("isAuthenticated")) || false
+    JSON.parse(localStorage.getItem('isAuthenticated')) || false
   );
 
   useEffect(() => {
-    localStorage.setItem("isAuthenticated", JSON.stringify(isAuthenticated));
+    localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
   }, [isAuthenticated]);
 
   useEffect(() => {
     checkAuthStatus();
-    if (!isAuthenticated) return localStorage.removeItem("userdata");
+    if (!isAuthenticated) return localStorage.removeItem('userdata');
   }, []);
 
   const checkAuthStatus = async () => {
     try {
-      const response = (await useApi(
-        "check-auth",
-        "GET",
-        null,
+      const response = await request(
+        'check-auth',
+        'GET',
+        {},
         true
-      )) as ResponseData;
+      ) as ResponseData;
       // console.log(response?.message);
 
-      if (response.message === "Authorized") {
+      if (response.message === 'Authorized') {
         setIsAuthenticated(true);
-      } else if (response.message === "Unauthorized") {
+      } else if (response.message === 'Unauthorized') {
         setIsAuthenticated(false);
       }
     } catch (error) {
