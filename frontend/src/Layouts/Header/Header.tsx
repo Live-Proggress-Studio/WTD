@@ -12,17 +12,14 @@ interface HeaderProps {
   onSearchShortcut?: () => void;
 }
 
-const Header: FC<HeaderProps> = ({onBurgerMenuClick}) => {
-
-
-  
+const Header: FC<HeaderProps> = () => {
 
   return (
     <header className="header">
       <div className="header__container">
         <nav className="nav-menu">
           <div className="nav-menu__left">
-            <div className="menu-left__burger-menu" onClick={onBurgerMenuClick}>
+            <div className="menu-left__burger-menu" >
               <img src={burger} alt="menu-burger" />
               <span className="tooltip">{Keyboard.MENU}</span>
             </div>

@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 import "./SidebarItem.scss";
 
 interface SidebarItemProps {
@@ -10,12 +11,12 @@ interface SidebarItemProps {
 const SidebarItem: React.FC<SidebarItemProps> = ({ icon, text, link }) => {
   return (
     <div className="sidebar-item">
-      <Link to={link}>
+      <NavLink to={link}>
         <div className="sidebar-item__icon">
           <img src={icon} alt={text} />
         </div>
         <div className="sidebar-item__text">{text}</div>
-      </Link>
+      </NavLink>
     </div>
   );
 };

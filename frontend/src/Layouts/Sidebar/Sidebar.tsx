@@ -2,19 +2,30 @@
 // import sidebarLinks from "./SideBarLinks";
 import { Link } from "react-router-dom";
 import { Paths } from "@/App/Routing";
-import { FC } from "react";
+import { FC, useState } from "react";
 import "./Sidebar.scss";
+import sidebarLinks from "./SideBarLinks";
+import { SidebarItem } from "./SidebarItem";
+import {IoLogInSharp} from "react-icons/io5"
 
-interface SidebarProps {
-  isSidebarVisible: boolean;
-  setIsSidebarVisible?: (visible: boolean) => void;
-}
 
-const Sidebar: FC<SidebarProps> = ({isSidebarVisible}) => {
+
+const Sidebar: FC = () => {
+    const [isSidebarVisible, setIsSidebarVisible] = useState<boolean>(true);
+
+    const toggleSidebar = () => {
+      setIsSidebarVisible((prevIsSidebarVisible) => !prevIsSidebarVisible);
+    };
+
+    const isAuthenticated = false
 
   return (
-    <div className={`sidebar ${isSidebarVisible ? "" : "hidden"}`}>
-        {/* <>
+    <div className={`sidebar ${isSidebarVisible ? "open" : ""}`}>
+        <div className="sidebar__burger" onClick={toggleSidebar}>
+          <span className="sidebar__burger-bar"></span>
+          <span className="sidebar__burger-bar"></span>
+          <span className="sidebar__burger-bar"></span>
+        </div>
           {sidebarLinks.map((link, index) => (
             <SidebarItem
               key={index}
@@ -23,15 +34,12 @@ const Sidebar: FC<SidebarProps> = ({isSidebarVisible}) => {
               link={link.link}
             />
           ))}
-        </> */}
-        <>
-          <Link to={Paths.Signup}>
-            <button>Регистрация</button>
-          </Link>
+          <hr />
+          {!isAuthenticated ? (
           <Link to={Paths.Login}>
-            <button>Вход</button>
+            <button className="login_button">{isSidebarVisible ? "Войти" : <IoLogInSharp />}</button>
           </Link>
-        </>
+          ) : null }
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { CheckBoxToggler } from "@/Components";
 // import useApi from "@Hooks/useAPI";
-import { Paths } from "@/App/Routing";
-import "./settings.scss";
+// import { Paths } from "@/App/Routing";
+import "./settingsPage.scss";
 
 const Settings = () => {
 
@@ -24,7 +24,7 @@ const Settings = () => {
                   </div>
                 </div>
               </div>
-              <div className="setion__item">
+              {/* <div className="setion__item">
                 <div className="item__title">
                   <h2>Сочитания клавишь</h2>
                   <div className="item-box">
@@ -33,7 +33,7 @@ const Settings = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className="setion__item">
                 <div className="item__title">
                   <h2>Аккаунт</h2>

@@ -6,12 +6,13 @@ import { Loadable } from "../Providers/Loadable";
 import { Paths } from ".";
 
 
-const Settings = Loadable(lazy(() => import("@/Pages/Settings")));
-const Main = Loadable(lazy(() => import("@/Pages/Main/Main")));
-const UserProfile = Loadable(lazy(() => import("@/Pages/Auth/UserProfilePage/UserProfilePage")));
-const Login = Loadable(lazy(() => import("@/Pages/Auth/LoginPage/LoginPage")));
-const SignUP = Loadable(lazy(() => import("@/Pages/Auth/SignUpPage/SignUpPage")));
-const KBMap = Loadable(lazy(() => import("@Pages/Settings/KBMap")));
+const Settings = Loadable(lazy(() => import("@/Pages/SettingsPage/SettingsPage")));
+const CalendarPage = Loadable(lazy(() => import("@/Pages/CalendarPage/CalendarPage")));
+const AccauntPage = Loadable(lazy(() => import("@/Pages/AccauntPage/AccauntPage")));
+const AuthPage = Loadable(lazy(() => import("@/Pages/AuthPage/AuthPage")));
+const TargetPage = Loadable(lazy(() => import("@/Pages/TargetPage/TargetPage")));
+const TodoPage = Loadable(lazy(() => import("@/Pages/TodoPage/TodoPage")));
+const StatisticPage = Loadable(lazy(() => import("@/Pages/StatisticPage/StatisticPage")));
 
 
 
@@ -21,27 +22,45 @@ const Routing = () => createBrowserRouter([
     errorElement: <div>error</div>,
     children: [
       {
-        path: Paths.Home,
+        path: Paths.Home,                                                
+        element: (        
+              <CalendarPage />                                                
+        )                                                
+      },                                                
+      {                                                
+        path: Paths.TODO,                                                
+        element: (                                                
+              <TodoPage />
+        )
+      },
+      {
+        path: Paths.Goals,
         element: (
-              <Main />
+              <TargetPage />
+        )
+      },
+      {
+        path: Paths.Stats,
+        element: (
+              <StatisticPage />
         )
       },
       {
         path: Paths.Account,
         element: (
-            <UserProfile />
+            <AccauntPage />
         )
       },
       {
         path: Paths.Signup,
         element: (
-            <SignUP />
+            <AuthPage />
         )
       },
       {
           path: Paths.Login,
           element: (
-              <Login />
+              <AuthPage />
           )
         },
         {
@@ -50,12 +69,6 @@ const Routing = () => createBrowserRouter([
               <Settings />
           )
         },
-        {
-          path: Paths.KBMap,
-          element: (
-              <KBMap />
-          )
-       },
         {
           path: Paths.Notify,
           element: (

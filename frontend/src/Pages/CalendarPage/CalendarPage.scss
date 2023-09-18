@@ -1,0 +1,21 @@
+.container {
+    margin: 100px 50px;
+}
+
+
+.CalendarPage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+.CalendarPage__wrapper {
+    width: 700px;
+    background-color: aqua;
+    display: flex;
+    flex-wrap: wrap;
+}
+.CalendarPage__wrapper-box {
+    background-color: rgb(48, 52, 51);
+    display: flex;
+}

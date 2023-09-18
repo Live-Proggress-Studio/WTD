@@ -13,3 +13,4 @@ export const Loadable = (Component: ElementType) => (props: object) => {
         </Suspense>
       );
 };
+

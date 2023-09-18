@@ -8,7 +8,7 @@ import settings from "@Icons/Settings.svg";
 import account from "@Icons/Account.svg";
 
 const sidebarLinks = [
-  { icon: calendarIcon, text: "Календарь", link: `${Paths.Calendar}` },
+  { icon: calendarIcon, text: "Календарь", link: `${Paths.Home}` },
   { icon: todo, text: "Список дел", link: `${Paths.TODO}` },
   { icon: goal, text: "Мои Цели", link: `${Paths.Goals}` },
   { icon: graph, text: "Статискика", link: `${Paths.Stats}` },

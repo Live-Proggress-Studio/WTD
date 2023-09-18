@@ -2,8 +2,35 @@
 
 .loading {
     @include container;
+    width: 100%;
     font-size: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+
+.loader {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--button-bg);
+    box-shadow: 32px 0 var(--button-bg), -32px 0 var(--button-bg);
+    position: relative;
+    animation: flash 0.5s ease-out infinite alternate;
+  }
+  
+  @keyframes flash {
+    0% {
+      background-color: #FFF2;
+      box-shadow: 32px 0 #FFF2, -32px 0 var(--button-bg);
+    }
+    50% {
+      background-color: var(--button-bg);
+      box-shadow: 32px 0 #FFF2, -32px 0 #FFF2;
+    }
+    100% {
+      background-color: #FFF2;
+      box-shadow: 32px 0 var(--button-bg), -32px 0 #FFF2;
+    }
+  }
