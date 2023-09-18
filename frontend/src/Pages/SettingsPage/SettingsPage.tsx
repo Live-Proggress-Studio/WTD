@@ -40,7 +40,7 @@ const Settings = () => {
                   <div className='p-20'>
                     <Link to='/profile'>Настройки аккаунта</Link>
                   </div>
-                  <button type='button' className='button' onClick={logout}>
+                  <button type='button' className='button btn' onClick={logout}>
                     Выйти
                   </button>
                 </div>

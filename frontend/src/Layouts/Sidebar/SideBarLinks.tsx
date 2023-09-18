@@ -11,7 +11,7 @@ const sidebarLinks = [
   { icon: calendarIcon, text: "Календарь", link: `${Paths.Home}` },
   { icon: todo, text: "Список дел", link: `${Paths.TODO}` },
   { icon: goal, text: "Мои Цели", link: `${Paths.Goals}` },
-  { icon: graph, text: "Статискика", link: `${Paths.Stats}` },
+  { icon: graph, text: "Статистика", link: `${Paths.Stats}` },
   { icon: settings, text: "Настройки", link: `${Paths.Settings}` },
   { icon: account, text: "Аккаунт", link: `users/${userModel.id}` },
 ];

@@ -75,7 +75,7 @@ const LoginForm = () => {
         {isLogin && (
           <>
             <input
-              className='LoginForm-emal'
+              className='LoginForm-email'
               placeholder='Your name'
               {...register('name', {
                 min: 2,
@@ -87,7 +87,7 @@ const LoginForm = () => {
           </>
         )}
         <input
-          className='LoginForm-emal'
+          className='LoginForm-email'
           placeholder='Email'
           {...register('email', {
             // required: "Введите ваш email!",
