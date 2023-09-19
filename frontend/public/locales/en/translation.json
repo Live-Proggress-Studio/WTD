@@ -1,0 +1,50 @@
+{
+  "main": {
+    "buttons": {
+      "signup": "SignUP",
+      "login": "Login",
+      "logout": "Logout"
+    },
+    "sidebar": {
+      "calendar": "Calendar",
+      "todolist": "Todo list",
+      "mygoals": "My goals",
+      "statistic": "Statistic",
+      "settings": "Settings",
+      "account": "Account"
+    },
+    "auth": {
+      "whanttoreg": "Don't have an account yet?",
+      "whanttologin": "Do you want to login into your account?",
+      "register": "Signup!",
+      "login": "Login!",
+      "name": "Your Name",
+      "email": "Email",
+      "password": "Password",
+      "notifications": {
+        "signupsuccess": "Successful registration!",
+        "loginerror": "Authorisation Error!",
+        "loginsuccess": "Successful authorization!",
+        "feelrows": "Please fill out all fields!"
+      },
+      "validate": {
+        "email": "Enter your email!"
+      }
+    },
+    "errors": {
+      "error": "Error!"
+    }
+  },
+
+  "settings": {
+    "settings": "Settings",
+    "theme": "Theme",
+    "language": "Language",
+    "account": "Account",
+    "accountsettings": "Account's settings",
+    "logout": "Logout"
+  },
+  "calendar": {
+    "day": "Day"
+  }
+}
