@@ -25,7 +25,8 @@
         "signupsuccess": "Successful registration!",
         "loginerror": "Authorisation Error!",
         "loginsuccess": "Successful authorization!",
-        "feelrows": "Please fill out all fields!"
+        "feelrows": "Please fill out all fields!",
+        "gotemail": "A user with this email already exists!"
       },
       "validate": {
         "email": "Enter your email!"

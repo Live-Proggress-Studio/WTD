@@ -41,7 +41,7 @@ const LoginForm = () => {
       if (error instanceof Error) {
         console.error('Ошибка регистрации:', error);
         if (error.message === 'Пользователь с таким email уже существует') {
-          notification.warn('Пользователь с таким email уже существует!');
+          notification.warn(t('main.auth.notifications.gotemail'));
         } else {
           notification.error(`Ошибка регистрации: ${error.message}`);
         }
@@ -63,7 +63,9 @@ const LoginForm = () => {
       notification.success(t('main.auth.notifications.loginsuccess'));
     } catch (error) {
       console.error('Ошибка авторизации:', error);
-      notification.error(`${t('main.auth.notifications.loginerror')}\n${error}`);
+      notification.error(
+        `${t('main.auth.notifications.loginerror')}\n${error}`
+      );
     }
   };
 
@@ -84,7 +86,9 @@ const LoginForm = () => {
               })}
             />
             <div className='Form-error'>
-              {errors?.name && <p>{errors?.name?.message || t('main.auth.errors.error')}</p>}
+              {errors?.name && (
+                <p>{errors?.name?.message || t('main.auth.errors.error')}</p>
+              )}
             </div>
           </>
         )}
@@ -97,7 +101,9 @@ const LoginForm = () => {
           })}
         />
         <div className='Form-error'>
-          {errors?.email && <p>{errors?.email?.message || t('main.errors.error')}</p>}
+          {errors?.email && (
+            <p>{errors?.email?.message || t('main.errors.error')}</p>
+          )}
         </div>
         <input
           {...register('password', { min: 2 })}

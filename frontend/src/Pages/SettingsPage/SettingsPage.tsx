@@ -4,6 +4,7 @@ import { CheckBoxToggler } from '@/Components';
 import { Locales } from '@/Utils/Constants/variables';
 import { useTranslation } from 'react-i18next';
 import './settingsPage.scss';
+import { Paths } from '@/App/Routing';
 
 const Settings = () => {
   const { t, i18n } = useTranslation();
@@ -63,7 +64,7 @@ const Settings = () => {
               <h2>{t('settings.account')}</h2>
               <div className='item-box'>
                 <div className='p-20'>
-                  <Link to='/profile'>{t('settings.accountsettings')}</Link>
+                  <Link to={Paths.Account}>{t('settings.accountsettings')}</Link>
                 </div>
                 <button type='button' className='button btn' onClick={logout}>
                   {t('settings.logout')}
