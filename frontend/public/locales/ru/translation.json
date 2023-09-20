@@ -1,0 +1,52 @@
+{
+  "main": {
+    "buttons": {
+      "signup": "Зарегистрироваться",
+      "login": "Войти",
+      "logout": "Выйти"
+    },
+    "sidebar": {
+      "calendar": "Календарь",
+      "todolist": "Список дел",
+      "mygoals": "Мои Цели",
+      "statistic": "Статистика",
+      "settings": "Настройки",
+      "account": "Аккаунт"
+    },
+    "auth": {
+      "whanttoreg": "Ещё нет аккаунта?",
+      "whanttologin": "Хотите войти в аккаунт?",
+      "register": "Зарегистрируйтесь!",
+      "login": "Войти!",
+      "name": "Ваше имя",
+      "email": "Почта",
+      "password": "Пароль",
+      "notifications": {
+        "signupsuccess": "Успешная регистрация!",
+        "loginerror": "Ошибка авторицации!",
+        "loginsuccess": "Успешная авторизация!",
+        "feelrows": "Пожалуйста, заполните все поля!",
+        "gotemail": "Пользователь с таким email уже существует!"
+      },
+      "validate": {
+        "email": "Введите ваш email!"
+      }
+    },
+    "errors": {
+      "error": "Ошибка!"
+    }
+  },
+
+  "settings": {
+    "settings": "Настройки",
+    "theme": "Тема",
+    "language": "Язык",
+    "account": "Аккаунт",
+    "accountsettings": "Настройки аккаунта",
+    "logout": "Выйти"
+  },
+
+  "calendar": {
+    "day": "День"
+  }
+}

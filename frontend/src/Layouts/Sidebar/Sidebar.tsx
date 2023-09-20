@@ -1,8 +1,9 @@
 import { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { IoLogInSharp } from 'react-icons/io5';
 import { Paths } from '@App/Routing';
-import sidebarLinks from './SideBarLinks';
+import SidebarLinks from './SideBarLinks';
 import { SidebarItem } from './SidebarItem';
 import './Sidebar.scss';
 
@@ -14,6 +15,10 @@ const Sidebar: FC = () => {
   };
 
   const isAuthenticated = false;
+
+  const { t } = useTranslation();
+
+  const sidebarLinks = SidebarLinks();
 
   return (
     <div className={`sidebar ${isSidebarVisible ? 'open' : ''}`}>
@@ -34,7 +39,7 @@ const Sidebar: FC = () => {
       {!isAuthenticated ? (
         <Link to={Paths.Login}>
           <button className='login_button'>
-            {isSidebarVisible ? 'Войти' : <IoLogInSharp />}
+            {isSidebarVisible ? t('main.buttons.login') : <IoLogInSharp />}
           </button>
         </Link>
       ) : null}

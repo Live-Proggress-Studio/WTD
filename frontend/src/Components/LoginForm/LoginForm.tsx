@@ -1,6 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 import { notification } from '..';
 import { request } from '@Utils/Hooks/useApi';
 import { Paths } from '@App/Routing';
@@ -17,6 +18,7 @@ const LoginForm = () => {
   // const {request} = useHttp()
   const local = useLocation();
   const isLogin = local.pathname === Paths.Signup;
+  const { t } = useTranslation();
 
   const {
     register,
@@ -27,19 +29,19 @@ const LoginForm = () => {
   const onRegister: SubmitHandler<Inputs> = async (data) => {
     //@ Валидация полей
     if (!data.email || !data.password) {
-      notification.warn('Пожалуйста, заполните все поля!');
+      notification.warn(t('main.auth.notifications.feelrows'));
       return;
     }
 
     try {
       const response = await request('signup', 'POST', data, true);
       console.log('Успешная регистрация!', response);
-      notification.success('Успешная регистрация!');
+      notification.success(t('main.auth.notifications.signupsuccess'));
     } catch (error: unknown) {
       if (error instanceof Error) {
         console.error('Ошибка регистрации:', error);
         if (error.message === 'Пользователь с таким email уже существует') {
-          notification.warn('Пользователь с таким email уже существует!');
+          notification.warn(t('main.auth.notifications.gotemail'));
         } else {
           notification.error(`Ошибка регистрации: ${error.message}`);
         }
@@ -50,7 +52,7 @@ const LoginForm = () => {
   const onLogin: SubmitHandler<Inputs> = async (data) => {
     //@ Валидация полей
     if (!data.email || !data.password) {
-      notification.warn('Пожалуйста, заполните все поля!');
+      notification.warn(t('main.auth.notifications.signupsuccess'));
       return;
     }
 
@@ -58,10 +60,12 @@ const LoginForm = () => {
       const response = await request('login', 'POST', data);
       // localStorage.setItem('userdata', JSON.stringify(response.message));
       console.log('Успешная авторизация!', response);
-      notification.success('Успешная авторизация!');
+      notification.success(t('main.auth.notifications.loginsuccess'));
     } catch (error) {
       console.error('Ошибка авторизации:', error);
-      notification.error(`Ошибка авторицации!\n${error}`);
+      notification.error(
+        `${t('main.auth.notifications.loginerror')}\n${error}`
+      );
     }
   };
 
@@ -76,48 +80,52 @@ const LoginForm = () => {
           <>
             <input
               className='LoginForm-email'
-              placeholder='Your name'
+              placeholder={t('main.auth.name')}
               {...register('name', {
                 min: 2,
               })}
             />
             <div className='Form-error'>
-              {errors?.name && <p>{errors?.name?.message || 'Ошибка!'}</p>}
+              {errors?.name && (
+                <p>{errors?.name?.message || t('main.auth.errors.error')}</p>
+              )}
             </div>
           </>
         )}
         <input
           className='LoginForm-email'
-          placeholder='Email'
+          placeholder={t('main.auth.email')}
           {...register('email', {
-            // required: "Введите ваш email!",
+            // required: t('main.auth.validate.email'),
             pattern: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
           })}
         />
         <div className='Form-error'>
-          {errors?.email && <p>{errors?.email?.message || 'Ошибка!'}</p>}
+          {errors?.email && (
+            <p>{errors?.email?.message || t('main.errors.error')}</p>
+          )}
         </div>
         <input
           {...register('password', { min: 2 })}
           className='LoginForm-password'
-          placeholder='Password'
+          placeholder={t('main.auth.password')}
           type='password'
         />
         <div className='LoginForm-subtext'>
           {isLogin ? (
             <>
-              <span>Хотите войти в аккаунт? </span>
-              <Link to={Paths.Login}>Войти!</Link>
+              <span>{t('main.auth.whanttologin')} </span>
+              <Link to={Paths.Login}>{t('main.auth.login')}</Link>
             </>
           ) : (
             <>
-              <span>Ещё нет аккаунта? </span>
-              <Link to={Paths.Signup}>Зарегистрируйтесь!</Link>
+              <span>{t('main.auth.whanttoreg')} </span>
+              <Link to={Paths.Signup}>{t('main.auth.register')}</Link>
             </>
           )}
         </div>
         <button className='LoginForm-submit' type='submit'>
-          {isLogin ? 'Зарегестрироваться' : 'Войти'}
+          {isLogin ? t('main.buttons.signup') : t('main.buttons.login')}
         </button>
       </form>
       <ToastContainer />
