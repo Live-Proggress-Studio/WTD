@@ -1,11 +1,10 @@
-// @ts-nocheck
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { CheckBoxToggler } from '@/Components';
 import { Locales } from '@/Utils/Constants/variables';
-import { useTranslation } from 'react-i18next';
-import './settingsPage.scss';
 import { Paths } from '@/App/Routing';
 import { userModel } from '@/Services/Models';
+import './settingsPage.scss';
 
 const Settings = () => {
   const { t, i18n } = useTranslation();

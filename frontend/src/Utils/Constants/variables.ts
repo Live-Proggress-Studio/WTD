@@ -29,7 +29,15 @@ export const Keyboard = {
 
 //@ Locales
 //? Список поддерживаемых языков
-export const Locales = {
-  en: { title: 'English' },
-  ru: { title: 'Русский' },
+export const Locales: {
+  [key: string]: {
+    title: string;
+  };
+} = {
+  en: {
+    title: 'English',
+  },
+  ru: {
+    title: 'Русский',
+  },
 };
