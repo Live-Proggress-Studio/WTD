@@ -3,7 +3,7 @@ import "./CalendarPage.scss";
 
 const CalendarPage = () => {
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   
   const divs = Array.from({ length: 100 }, (_, index) => (
     <div className="CalendarPage__wrapper-box" key={index}> {t('calendar.day')} {index + 1}</div>
