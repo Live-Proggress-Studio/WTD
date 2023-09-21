@@ -6,15 +6,17 @@ import { Paths } from '@App/Routing';
 import SidebarLinks from './SideBarLinks';
 import { SidebarItem } from './SidebarItem';
 import './Sidebar.scss';
+import { useUserStore } from '@/Stores';
 
 const Sidebar: FC = () => {
+  const Auth = useUserStore(state => state.Auth)
   const [isSidebarVisible, setIsSidebarVisible] = useState<boolean>(true);
 
   const toggleSidebar = () => {
     setIsSidebarVisible((prevIsSidebarVisible) => !prevIsSidebarVisible);
   };
 
-  const isAuthenticated = false;
+  // const isAuthenticated = false;
 
   const { t } = useTranslation();
 
@@ -36,7 +38,7 @@ const Sidebar: FC = () => {
         />
       ))}
       <hr />
-      {!isAuthenticated ? (
+      {!Auth ? (
         <Link to={Paths.Login}>
           <button className='login_button'>
             {isSidebarVisible ? t('main.buttons.login') : <IoLogInSharp />}
