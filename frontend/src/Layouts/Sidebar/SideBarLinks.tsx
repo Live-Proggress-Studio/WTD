@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Paths } from '@/App/Routing';
-import { userModel } from '@Services/Models';
+// import { userModel } from '@Services/Models';
 import calendarIcon from '@Icons/Calendar.svg';
 import todo from '@Icons/TodoList.svg';
 import goal from '@Icons/Goal.svg';
@@ -40,7 +40,7 @@ const SidebarLinks = () => {
     {
       icon: account,
       text: t('main.sidebar.account'),
-      link: `users/${userModel.id}`,
+      link: `users`,
     },
   ];
 

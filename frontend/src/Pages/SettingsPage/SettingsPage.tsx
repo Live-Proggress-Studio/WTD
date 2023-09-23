@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { CheckBoxToggler } from '@/Components';
 import { Locales } from '@/Utils/Constants/variables';
 import { Paths } from '@/App/Routing';
-import { userModel } from '@/Services/Models';
+// import { userModel } from '@/Services/Models';
 import './settingsPage.scss';
 
 const Settings = () => {
@@ -64,7 +64,7 @@ const Settings = () => {
               <h2>{t('settings.account')}</h2>
               <div className='item-box'>
                 <div className='p-20'>
-                  <Link to={`${Paths.Users}${userModel.id}`}>{t('settings.accountsettings')}</Link>
+                  {/* <Link to={`${Paths.Users}${userModel.id}`}>{t('settings.accountsettings')}</Link> */}
                 </div>
                 <button type='button' className='button btn' onClick={logout}>
                   {t('settings.logout')}

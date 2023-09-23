@@ -5,3 +5,4 @@ export { default as CalendarPage } from './CalendarPage/CalendarPage';
 export { default as TargetPage } from './TargetPage/TargetPage';
 export { default as TodoPage } from './TodoPage/TodoPage';
 export { default as StatisticPage } from './StatisticPage/StatisticPage';
+export { default as  ErrorPage} from './ErrorPage/ErrorPage';

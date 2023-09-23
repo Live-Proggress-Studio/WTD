@@ -23,4 +23,5 @@ export const useUserStore = create<IUserStore>()(devtools(persist(immer((set) =>
     setIsAuth: () => set(state => {
             state.Auth = true
     }),
-})),{name: 'userStore'})))
+    
+})),{name: 'UserStore'})))

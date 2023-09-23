@@ -23,3 +23,7 @@ export const TodoPage = Loadable(
 export const StatisticPage = Loadable(
   lazy(() => import('@Pages/StatisticPage/StatisticPage'))
 );
+
+export const ErrorPage = Loadable(
+  lazy(() => import('@Pages/ErrorPage/ErrorPage'))
+);

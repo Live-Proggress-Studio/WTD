@@ -1,0 +1,10 @@
+
+
+.CalendarSettings {
+    display: flex;
+    align-items: center;
+    &__range {
+        width: 250px;
+        color: black;
+    }
+}

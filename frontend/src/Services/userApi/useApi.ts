@@ -27,6 +27,8 @@ export const request = async (
 
   const response = await api(url, options);
   const responseData = await response.json();
+  console.log(responseData);
+  
 
   return responseData;
 };

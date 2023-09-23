@@ -1,0 +1,45 @@
+@import "@Styles/Mixins.scss";
+.ErrorPage {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__wrapper {
+        width: 500px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    &__number {
+        font-size: 196px;
+        font-family: 'Courier New', Courier, monospace;
+        color: var(--button-bg);
+    }
+
+
+    &__title {
+        font-size: 52px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+
+    &__back {
+        margin-top: 15px;
+        height: 45px;
+        width: 100px;
+        color: var(--button-bg);
+        background-color: transparent;
+        border-radius: 5px;
+        border: 2px solid var(--button-bg);
+        transition: background-color 0.4s;
+        cursor: pointer;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.204);
+        }
+    }
+}

@@ -1,22 +1,23 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Notification } from '@/Components';
+import { Loading, Notification } from '@/Components';
 import { Layout } from '@/Layouts/Layout';
 import { Paths } from '.';
 import {
-  AccountPage,
+  AccauntPage,
   AuthPage,
   CalendarPage,
   Settings,
   StatisticPage,
   TargetPage,
   TodoPage,
-} from '@/Pages';
+  ErrorPage
+} from '@/App/Routing/Lazy';
 
 const Routing = () =>
   createBrowserRouter([
     {
       element: <Layout />,
-      errorElement: <div>error</div>,
+      errorElement: <ErrorPage/>,
       children: [
         {
           path: Paths.Home,
@@ -36,7 +37,7 @@ const Routing = () =>
         },
         {
           path: Paths.Account,
-          element: <AccountPage />,
+          element: <AccauntPage />,
         },
         {
           path: Paths.Signup,

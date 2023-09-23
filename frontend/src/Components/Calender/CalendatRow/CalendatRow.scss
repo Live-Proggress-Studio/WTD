@@ -1,0 +1,20 @@
+
+
+.CalenderRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.CalenderRow__count {
+
+}
+
+.CalenderRow__items {   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    gap: 5px;
+}
