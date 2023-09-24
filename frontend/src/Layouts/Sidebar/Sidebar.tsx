@@ -6,10 +6,10 @@ import { Paths } from '@App/Routing';
 import SidebarLinks from './SideBarLinks';
 import { SidebarItem } from './SidebarItem';
 import './Sidebar.scss';
-import { useUserStore } from '@/Stores';
+import { useAuthStore } from '@/Stores';
 
 const Sidebar: FC = () => {
-  const Auth = useUserStore(state => state.Auth)
+  const Auth = useAuthStore(state => state.Auth)
   const [isSidebarVisible, setIsSidebarVisible] = useState<boolean>(true);
 
   const toggleSidebar = () => {

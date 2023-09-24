@@ -1,46 +1,22 @@
-import React, { useState, ChangeEvent } from 'react'
-import './CalendarSettings.scss'
-import Select from 'react-select'
+import Select from './Select/Select'
 import {optionYyears, optionsDays, optionsMonth} from './options/options'
-import { useCalendarStore } from '@/Stores/CalendarStore/calendarStore';
+import { useCalendarStore } from '@/Stores/index';
+import moment from 'moment';
 
-interface Option {
-    value: string;
-  }
+import './CalendarSettings.scss'
+import { useMonth } from '@/Utils/Hooks/useDate';
 
 
 const CalendarSettings = () => {
-
-    const [day, setDay] = useState<string>('');
-    const [month, setMounth] = useState<string>('');
-    const [years, setYear] = useState<string>('');
-
-    const {setDateStore, setMonthStore, setYearStore} = useCalendarStore()
-
-    const getday = (selected: Option | null) =>  {
-        const {value} = selected as Option
-        setDay(value);
-        setDateStore(value)
-    }
-
-    const getmonth = (selected: Option | null) =>  {
-        const {value} = selected as Option
-        setMounth(value);
-        setMonthStore(value)
-    }
-    const getyear = (selected: Option | null) =>  {
-        const {value} = selected as Option
-        setYear(value);
-        setYearStore(value)
-    }
+  const {dayStore, monthStore, yearStore,  setDateStore, setMonthStore, setYearStore} = useCalendarStore()
+  
 
   return (
     <div className='CalendarSettings'>
-        
         <div className="CalendarSettings__title"></div>
-        <Select placeholder="День" onChange={getday} options={optionsDays} className="CalendarSettings__range"/>
-        <Select placeholder="Месяц" onChange={getmonth} options={optionsMonth} className="CalendarSettings__range"/>
-        <Select placeholder="Год" onChange={getyear} options={optionYyears} className="CalendarSettings__range"/>
+        <Select onChange={setDateStore} value={dayStore} options={optionsDays}/>
+        <Select onChange={setMonthStore} value={monthStore} options={optionsMonth} />
+        <Select onChange={setYearStore} value={yearStore} options={optionYyears}/>
 
     </div>
   )

@@ -7,26 +7,26 @@ import { immer } from "zustand/middleware/immer";
 // }
 
 interface ICalenderStore {
-    day: string;
-    month: string;
-    year: string;
-    setDateStore: (date: string) => void
-    setMonthStore: (date: string) => void
-    setYearStore: (date: string) => void
+    dayStore: string | null;
+    monthStore: string | null;
+    yearStore: string | null;
+    setDateStore: (value: string | null) => void
+    setMonthStore: (value: string | null) => void
+    setYearStore: (value: string | null) => void
 }
 
 
 export const useCalendarStore = create<ICalenderStore>()(devtools(persist(immer((set) => ({
-    day: '',
-    month: '',
-    year: '',
-    setDateStore: (date: string ) => set(state => {
-        state.day = date
+    dayStore: '',
+    monthStore: '',
+    yearStore: '',
+    setDateStore: (value) => set(state => {
+        state.dayStore = value
     }),
-    setMonthStore: (date: string ) => set(state => {
-        state.month = date
+    setMonthStore: (value) => set(state => {
+        state.monthStore = value
     }),
-    setYearStore: (date: string ) => set(state => {
-        state.year = date
+    setYearStore: (value) => set(state => {
+        state.yearStore = value
     })
 })),{name: 'CalendarStore'})))

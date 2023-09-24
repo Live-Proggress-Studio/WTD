@@ -2,11 +2,13 @@ import React, { FC, useMemo, memo } from 'react'
 import CalendarRowItem from '../CalendatRowItem/CalendarRowItem'
 import './CalendatRow.scss'
 
+
 interface IProps {
     index: number
 }
 
 const CalenderRow: FC<IProps> = memo(({index}) => {
+
     
     const renderItems = useMemo(() => {
         const items: JSX.Element[] = []

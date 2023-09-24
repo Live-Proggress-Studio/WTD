@@ -10,18 +10,22 @@ interface IUser {
     createdAt:  string,
 }
 
-interface IUserStore {
+interface IAuthStore {
   Auth: boolean;
-  User: IUser
+  User: IUser;
+  error: string | null;
+  isLoading: boolean;
   setIsAuth: () => void;
 }
 
 
-export const useUserStore = create<IUserStore>()(devtools(persist(immer((set) => ({
+export const useAuthStore = create<IAuthStore>()(devtools(persist(immer((set) => ({
     Auth: false,
+    error: null,
+    isLoading: false,
     User: {} as IUser,
     setIsAuth: () => set(state => {
             state.Auth = true
     }),
     
-})),{name: 'UserStore'})))
+})),{name: 'AuthStore', version: 1})))

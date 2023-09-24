@@ -1,26 +1,24 @@
 const currentYear = new Date().getFullYear();
 export const optionYyears: Record<"value" | "label", string>[] = [];
 
-for (let year = 1934; year <= currentYear; year++) {
+for (let year = currentYear; year >= 1950; year--) {
     optionYyears.push({ value: year.toString(), label: year.toString() });
 }
 
 
-
-
 export const optionsMonth = [ 
-    { value: 'Январь', label: 'Январь' },
-    { value: 'Февраль', label: 'Февраль' },
-    { value: 'Март', label: 'Март' },
-    { value: 'Апрель', label: 'Апрель' },
-    { value: 'Май', label: 'Май' },
-    { value: 'Июнь', label: 'Июнь' },
-    { value: 'Июль', label: 'Июль' },
-    { value: 'Август', label: 'Август' },
-    { value: 'Сентябрь', label: 'Сентябрь' },
-    { value: 'Октябрь', label: 'Октябрь' },
-    { value: 'Ноябрь', label: 'Ноябрь' },
-    { value: 'Декабрь', label: 'Декабрь' },
+    { value: '1', label: 'Январь' },
+    { value: '2', label: 'Февраль' },
+    { value: '3', label: 'Март' },
+    { value: '4', label: 'Апрель' },
+    { value: '5', label: 'Май' },
+    { value: '6', label: 'Июнь' },
+    { value: '7', label: 'Июль' },
+    { value: '8', label: 'Август' },
+    { value: '9', label: 'Сентябрь' },
+    { value: '10', label: 'Октябрь' },
+    { value: '11', label: 'Ноябрь' },
+    { value: '12', label: 'Декабрь' },
 ]
 
 export const optionsDays = [
