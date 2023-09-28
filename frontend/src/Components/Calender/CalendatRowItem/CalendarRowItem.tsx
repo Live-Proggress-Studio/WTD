@@ -1,20 +1,26 @@
-import React from 'react'
+import React, { FC, memo } from 'react'
 import './CalendatRowItem.scss'
-import { useCalendarStore } from '@/Stores'
 
-interface IProps {
-    index: number
-    currentWeek?: number
+// interface IProps {
+//     index: number
+//     // myDate: Date
+//     // dateNow: Date
+//     date: Date
+//     isActive: boolean
+//     cellData: { date: Date; isActive: boolean }
+// }
+
+interface IDates {
+  cellData: { date: Date; isActive: boolean; }; key: number;
 }
 
-const CalendarRowItem =(props: IProps) => {
-  const {index } = props
+const CalendarRowItem: FC<IDates> = memo(({cellData,key}) => {
 
   return (
-    <div className="CalendarRowItem">
-        <div className='CalendarRowItem__item' data-type={index}></div>
+    <div className={cellData.isActive ? 'CalendarRowItem__item CalendarRowItem__active' : 'CalendarRowItem__item'}>
+        <div className={'CalendarRowItem__item'} data-type={cellData.date}></div>
     </div>
-  )
-}
+  ) 
+})
 
 export default CalendarRowItem
