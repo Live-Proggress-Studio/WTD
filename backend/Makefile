@@ -1,13 +1,12 @@
-# variables
-appname = wtd
+appname = backend
 
 # run go app
 Default:
-	go run ./cmd/$(appname)/main.go
+	cargo run
 # build go app
 build:
-	go build -o $(appname) ./cmd/$(appname)/main.go
+	cargo build --release
 
 # start binary app
 start:
-	./$(appname)
+	./target/release/$(appname).exe

@@ -44,7 +44,7 @@ const LoginForm = () => {
 
   const onLogin: SubmitHandler<IInputs> = async (data) => {
     try {
-      const response = await request("login", "POST", data);
+      const response = await request("login", "POST", data, true);
       console.log(response);
       notification.success(t("main.auth.notifications.loginsuccess"));
     } catch (error) {
