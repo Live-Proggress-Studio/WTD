@@ -9,7 +9,6 @@ edition = "2021"
 [dependencies]
 actix-web = "4.4.0"
 actix-cors = "0.6.4"
-actix-rt = "2.6.0"
 dotenv = "0.15.0"
 sqlx = { version = "0.7.2", features = ["postgres", "runtime-tokio", "chrono", "macros"] }
 chrono = { version = "0.4.31", features = ["serde"] }
@@ -21,7 +20,4 @@ log = "0.4.14"
 bcrypt = "0.15.0"
 jsonwebtoken = "9.1.0"
 env_logger = "0.10.0"
-rand = "0.8.5"
-argon2 = "0.5.2"
-thiserror = "1.0.50"
 cookie = "0.18.0"

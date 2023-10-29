@@ -1,4 +1,4 @@
-use actix_web::{web, App, HttpResponse, HttpServer, get, post};
+use actix_web::{web, App, HttpResponse, HttpServer, get, post, cookie::Cookie};
 use actix_cors::Cors;
 use chrono::Utc;
 use sqlx::postgres::{PgPoolOptions, PgPool};
@@ -143,8 +143,20 @@ async fn login(user: web::Json<Login>) -> HttpResponse {
     )
     .expect("JWT encoding failed");
 
-    HttpResponse::Ok().json(token)
+    // Создаем куки с токеном
+    let cookie = Cookie::build("token", token)
+        .domain("localhost")
+        .path("/")
+        .secure(false)
+        .http_only(true)
+        .finish();
+
+    // Устанавливаем куки в HTTP-ответ
+    HttpResponse::Ok()
+    .cookie(cookie.clone()) // Устанавливаем куки в ответ
+        .json(json!({ "message": cookie.to_string() }))
 }
+
 
 #[actix_web::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -157,7 +169,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .await
         .expect("Failed to create database pool");
 
-    let port = std::env::var("PORT").unwrap_or_else(|_| "4000".to_string());
+    let port = env::var("PORT").unwrap_or_else(|_| "4000".to_string());
     let bind_addr = format!("127.0.0.1:{port}");
 
     println!("Server stated at the {bind_addr}!");
