@@ -28,8 +28,8 @@ Back-end: ~~[Go](https://go.dev)~~, [Rust](https://www.rust-lang.org) \
 
 | Photo | Name | Role |
 |:------:|:------:|:------:|
-|  <img width="100px" src="../../frontend/public/AUTHORS/Авдюшин.png" alt="Авдюшин Добрыня"/>    | [Авдюшин Добрыня](https://github.com/Avdushin) | Автор идеи, Full-stack dev
-|  <img width="100px" src="../../frontend/public/AUTHORS/Львов.jpg" alt="Львов Никита"/>    | [Никита Львов](https://github.com/Slark58) | Full-stack dev
+|  <img width="100px" src="https://media.discordapp.net/attachments/650681889308278785/1168412347589726269/5d1176a3df461aac.png?ex=6551abcb&is=653f36cb&hm=5f57977b41f4b71f55e6226e2047cea0430355fcdaf218727299e08aad6fc4c3&=&width=683&height=683" alt="Авдюшин Добрыня"/>    | [Авдюшин Добрыня](https://github.com/Avdushin) | Автор идеи, Full-stack dev
+|  <img width="100px" src="https://cdn.discordapp.com/attachments/650681889308278785/1168412347975618600/a3148d4107d9c3c0.jpg?ex=6551abcb&is=653f36cb&hm=829b3ec9d95cc3ca59ed229dab8245a9ca8339dd6191b9c486263e8453dbee97&" alt="Львов Никита"/>    | [Никита Львов](https://github.com/Slark58) | Full-stack dev
 
 <br>
 
