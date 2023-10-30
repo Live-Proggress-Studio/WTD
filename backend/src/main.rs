@@ -144,8 +144,8 @@ async fn login(user: web::Json<Login>) -> HttpResponse {
     .expect("JWT encoding failed");
 
     // Создаем куки с токеном
-    let cookie = Cookie::build("token", token)
-        .domain("localhost")
+    let cookie = Cookie::build("Authorization", token)
+        .domain("http://127.0.0.1:8080")
         .path("/")
         .secure(false)
         .http_only(true)
@@ -153,7 +153,7 @@ async fn login(user: web::Json<Login>) -> HttpResponse {
 
     // Устанавливаем куки в HTTP-ответ
     HttpResponse::Ok()
-    .cookie(cookie.clone()) // Устанавливаем куки в ответ
+    .cookie(cookie.clone())
         .json(json!({ "message": cookie.to_string() }))
 }
 

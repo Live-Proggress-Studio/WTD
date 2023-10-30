@@ -21,6 +21,8 @@ const LoginForm = () => {
 
   const isSignUp = local.pathname === Paths.Signup;
 
+  const cookies = new Cookies();
+
   const {
     register,
     handleSubmit,
