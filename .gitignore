@@ -10,7 +10,6 @@ lerna-debug.log*
 # Backups
 backups/
 backups/archives/
-backend/.sqlx/
 !backend/target/doc
 backend/target/*
 
