@@ -10,6 +10,8 @@ use jsonwebtoken::{encode, Header, Algorithm, EncodingKey};
 use chrono::Duration;
 use serde_json::json;
 
+const IS_SSL: bool = false; 
+
 // User struct!
 #[derive(sqlx::FromRow, Serialize, Deserialize)]
 pub struct User {
@@ -160,7 +162,16 @@ async fn login(user: web::Json<Login>) -> HttpResponse {
 
 #[actix_web::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // Load dotenv variables
     dotenv::dotenv().ok();
+
+    let http_prefix: &str;
+
+    if IS_SSL {
+        http_prefix = "https://"
+    } else {
+        http_prefix = "http://"
+    }
 
     let db_url = env::var("DB").expect("DB connection string not found in .env file");
     let pool = PgPoolOptions::new()
@@ -172,7 +183,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let port = env::var("PORT").unwrap_or_else(|_| "4000".to_string());
     let bind_addr = format!("127.0.0.1:{port}");
 
-    println!("Server stated at the {bind_addr}!");
+    println!("Server stated at the {http_prefix}{bind_addr}!");
 
     HttpServer::new(move || {
         App::new()
