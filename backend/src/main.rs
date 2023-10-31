@@ -177,9 +177,10 @@ async fn login(user: web::Json<Login>, pool: web::Data<PgPool>, req: HttpRequest
             let set_cookie_header = format!("{}={}", cookie.name(), cookie.value());
 
             // Возвращаем успешный HTTP-ответ с JWT-токеном
-            Ok(HttpResponse::Ok()
-                .append_header((SET_COOKIE, set_cookie_header))
-                .json(json!({ "Authorization": token.to_string() })))
+            // Ok(HttpResponse::Ok()
+            //     .append_header((SET_COOKIE, set_cookie_header))
+            //     .json(json!({ "Authorization": token.to_string() })))
+            Ok(HttpResponse::Ok().json(json!({ "Authorization": token.to_string() })))
         } else {
             // Если пароль неверен, возвращаем ошибку аутентификации
             Ok(HttpResponse::Unauthorized().json(json!({ "error": "Invalid email or password" })))
