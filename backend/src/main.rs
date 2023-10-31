@@ -1,14 +1,20 @@
-use actix_web::{web, App, HttpResponse, HttpServer, get, post, cookie::Cookie};
+use actix_web::{web, App, HttpRequest, HttpResponse, HttpServer, get, post};
+// use actix_web::cookie::SameSite;
 use actix_cors::Cors;
-use chrono::Utc;
+use chrono::{Utc};
+use cookie::SameSite;
 use sqlx::postgres::{PgPoolOptions, PgPool};
 use std::env;
 use serde::{Deserialize, Serialize};
-use bcrypt::{hash, DEFAULT_COST};
+use bcrypt::{hash, verify, DEFAULT_COST};
 use sqlx::query;
 use jsonwebtoken::{encode, Header, Algorithm, EncodingKey};
-use chrono::Duration;
 use serde_json::json;
+use std::error::Error;
+use tower_cookies::{Cookie};
+// use cookie::SameSite;
+use http::header::SET_COOKIE;
+// use axum_core::extract::FromRequest;
 
 const IS_SSL: bool = false; 
 
@@ -20,7 +26,7 @@ pub struct User {
     pub updated_at: Option<chrono::DateTime<Utc>>,
     pub deleted_at: Option<chrono::DateTime<Utc>>,
     pub email: Option<String>,
-    pub password: Option<String>,
+    pub password: String,
     pub name: Option<String>,
 }
 
@@ -41,6 +47,7 @@ async fn get_all_users(pool: web::Data<PgPool>) -> Result<HttpResponse, actix_we
 
     Ok(HttpResponse::Ok().json(result))
 }
+
 
 // http://127.0.0.1:4000/api/signup
 #[post("/signup")]
@@ -88,7 +95,6 @@ async fn register_user(user: web::Json<NewUser>, pool: web::Data<PgPool>) -> Res
     }
 }
 
-
 // JWT claims struct!
 /// Структура с JWT данными (exp date и sub)
 #[derive(Debug, Serialize, Deserialize)]
@@ -106,6 +112,7 @@ fn cors() -> Cors {
         .allow_any_origin()
         .allowed_methods(vec!["GET", "POST", "OPTIONS"])
         .allowed_headers(vec!["Content-Type", "Authorization"])
+        .allow_any_origin()
         .supports_credentials()
 }
 
@@ -116,52 +123,75 @@ struct Login {
     email: String,
     password: String,
 }
+
 // Login handler func
 /// Login handler - хендлер авторизации пользователя
 /// Endpoint: http://127.0.0.1:4000/api/login
 #[post("/login")]
-async fn login(user: web::Json<Login>) -> HttpResponse {
+async fn login(user: web::Json<Login>, pool: web::Data<PgPool>, req: HttpRequest) -> Result<HttpResponse, actix_web::Error> {
     dotenv::dotenv().ok();
 
-    let jwt_secret = env::var("JWT_SECRET")
-        .expect("JWT_SECRET not found in .env");
+    // Извлекаем куки из HttpRequest
+    // let cookies = req.cookies();
 
-    let secret_key = jwt_secret.as_bytes();
+    // Поиск пользователя в базе данных по email
+    let db_user = sqlx::query_as::<_, User>("SELECT * FROM users WHERE email = $1")
+        .bind(&user.email)
+        .fetch_optional(pool.get_ref())
+        .await
+        .map_err(actix_web::error::ErrorInternalServerError)?;
 
-    let expiration = Utc::now()
-        .checked_add_signed(Duration::minutes(60))
-        .expect("valid timestamp")
-        .timestamp();
+    if let Some(db_user) = db_user {
+        // Проверка пароля. Если пароль верен, создаем JWT-токен.
+        if verify(&user.password, &db_user.password).unwrap_or(false) {
+            let jwt_secret = env::var("JWT_SECRET").expect("JWT_SECRET not found in .env");
+            let secret_key = jwt_secret.as_bytes();
+            let expiration = Utc::now()
+                .checked_add_signed(chrono::Duration::days(30))
+                .expect("valid timestamp")
+                .timestamp();
 
-    let claims = Claims {
-        sub: user.email.clone(),
-        exp: expiration,
-    };
+            let claims = Claims {
+                sub: db_user.email.unwrap_or_default(),
+                exp: expiration,
+            };
 
-    let token = encode(
-        &Header::new(Algorithm::HS512),
-        &claims,
-        &EncodingKey::from_secret(secret_key),
-    )
-    .expect("JWT encoding failed");
+            let token = encode(
+                &Header::new(Algorithm::HS512),
+                &claims,
+                &EncodingKey::from_secret(secret_key),
+            )
+            .expect("JWT encoding failed");
 
-    // Создаем куки с токеном
-    let cookie = Cookie::build("Authorization", token)
-        .domain("http://127.0.0.1:8080")
-        .path("/")
-        .secure(false)
-        .http_only(true)
-        .finish();
+            // Создаем куки (cookies) в ответе
+            let cookie = Cookie::build("Authorization", token.clone())
+                .same_site(SameSite::None)
+                .secure(true)
+                .path("/")
+                .finish();
 
-    // Устанавливаем куки в HTTP-ответ
-    HttpResponse::Ok()
-    .cookie(cookie.clone())
-        .json(json!({ "message": cookie.to_string() }))
+            // Преобразуем куки в строку
+            // let cookie_str = format!("{}", cookie);
+
+            // Создаем заголовок Set-Cookie
+            let set_cookie_header = format!("{}={}", cookie.name(), cookie.value());
+
+            // Возвращаем успешный HTTP-ответ с JWT-токеном
+            Ok(HttpResponse::Ok()
+                .append_header((SET_COOKIE, set_cookie_header))
+                .json(json!({ "Authorization": token.to_string() })))
+        } else {
+            // Если пароль неверен, возвращаем ошибку аутентификации
+            Ok(HttpResponse::Unauthorized().json(json!({ "error": "Invalid email or password" })))
+        }
+    } else {
+        // Если пользователя с указанным email не существует, возвращаем ошибку аутентификации
+        Ok(HttpResponse::Unauthorized().json(json!({ "error": "Invalid email or password" })))
+    }
 }
 
-
 #[actix_web::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
+async fn main() -> Result<(), Box<dyn Error>> {
     // Load dotenv variables
     dotenv::dotenv().ok();
 
